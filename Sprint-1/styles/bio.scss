@@ -1,0 +1,247 @@
+@use './partials/variables' as *;
+@use './partials/mixins' as *;
+@use './partials/fonts' as *;
+
+
+* {
+    font-family: 'AvenirNext LT Pro';
+    box-sizing: border-box;
+    margin: 0px;
+    // color: #323232;
+}
+
+.header {
+    background-color: #323232;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+
+    &__content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        // padding: 10px 0px;
+    }
+
+    &__nav {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        padding: 20px 0px;
+
+        &--selected {
+            border-bottom: 5px solid #ffffff;
+        }
+    }
+
+}
+
+.logo {
+    font-size: 40px;
+    text-decoration: none;
+    color: #ffffff;
+    // padding: 10px 0px;
+    padding: 20px 0px 10px 0px;
+    display: none;
+
+    &--nav {
+        display: inline-block;
+    }
+
+    &--mobile {
+        @include mobile {
+        display: inline-block;
+    }
+}
+
+    &--tablet {
+        @include tablet {
+            display: inline-block;
+        }
+    }
+}
+
+.hero {
+    background-image: url(../assets/Images/hero-bio.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 500px;
+    opacity: 75%;
+}
+
+.hero-text {
+    font-size: 60px;
+    font-weight: 600;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-left: 40px;
+    color: #ffffff;
+}
+
+.about__container {
+    width: 100%;
+    padding: 30px;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    &__heading {
+        font-size: 35px;
+        // padding-bottom: 10px;
+    }
+
+    &__image {
+        height: 45vh;
+        // width: 80vw;
+        // width: 100%;
+        padding: 10px;
+    }
+
+    &__quote {
+        // padding: 20px;
+        font-size: 25px;
+        font-weight: 700;
+        margin: 20px;
+        // width: 100%;
+    }
+
+}
+
+.about-article {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    font-size: 20px;
+    // padding: 30px; 
+
+    &__heading {
+        padding: 20px 0px 10px 0px;
+        font-weight: 700;
+        color: #000000;
+    }
+
+    &__content {
+        padding: 10px 0px;
+    }
+}
+
+.photo-gallery {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    &__heading {
+        font-size: 30px;
+        // display: flex;
+        // justify-content: flex-start;
+        // align-items: center;
+    }
+
+    &__images {
+        height: 45vh;
+        // width: 80vw;
+        // width: 100%;
+        padding: 10px;
+    }
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    background-color: #323232;
+    color: #ffffff;
+    padding: 30px;
+
+    &__heading {
+        font-size: 30px;
+
+    }
+
+    &__icons-list {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__icons {
+        height: 50px;
+        width: 50px;
+        padding: 10px;
+    }
+
+}
+
+.footer__card-container {
+    width: 100%; //tablet + desktop
+}
+
+.footer__card-wrapper {
+    /* mobile */
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 20px auto;
+
+    @include tablet {
+    /*
+    tablet + desktop 
+    */
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 20px 10px;
+    width: 30%;
+    }
+}
+
+.footer__card {
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+
+    @include tablet {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    color: #ffffff;
+    }
+
+
+    &--name {
+        margin: 10px 0px;
+    }
+
+    &--role {
+        margin: 10px 0px;
+    }
+
+    &--contact {
+        margin: 10px 0px;
+    }
+}

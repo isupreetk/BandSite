@@ -4,7 +4,7 @@
 
 
 * {
-    font-family: 'AvenirNext LT Pro';
+    font-family: 'AvenirNext LT Pro', 'Sans Serif';
     box-sizing: border-box;
     margin: 0px;
     // color: #323232;
@@ -13,17 +13,50 @@
 .header {
     background-color: #323232;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: #ffffff;
+    width: 100%;
+
+    @include mobile {
+        flex-direction: column;
+    }
+
+    @include tablet {
+        justify-content: flex-start;
+        // align-items: center;
+    }
+
+    @include desktop {
+        justify-content: flex-start;
+        // align-items: center;
+    }
 
     &__content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        // padding: 10px 0px;
+
+        @include mobile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            // padding: 10px 0px;
+        }
+
+        @include tablet {
+            display: inline-flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 40%;
+
+        }
+
+        @include desktop {
+            display: inline-flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 40%;
+
+        }
     }
 
     &__nav {
@@ -49,17 +82,44 @@
     display: none;
 
     &--nav {
-        display: inline-block;
+
+        @include mobile {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @include tablet {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+            padding-left: 0px;
+        }
+
+        @include desktop {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+            padding-left: 0px;
+        }
     }
 
     &--mobile {
         @include mobile {
-        display: inline-block;
+            display: inline-block;
+        }
     }
-}
 
     &--tablet {
         @include tablet {
+            display: inline-block;
+        }
+    }
+
+    &--desktop {
+        @include desktop {
             display: inline-block;
         }
     }
@@ -70,6 +130,7 @@
     background-position: center;
     background-size: cover;
     height: 500px;
+    width: 100%;
     opacity: 75%;
 }
 
@@ -103,8 +164,8 @@
     }
 
     &__image {
-        height: 45vh;
-        // width: 80vw;
+        height: 45vw;
+        width: 80vw;
         // width: 100%;
         padding: 10px;
     }
@@ -135,8 +196,43 @@
         color: #000000;
     }
 
-    &__content {
-        padding: 10px 0px;
+    // &__content {
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     width: 100%;
+    // }
+
+    &__subcontent {
+
+        @include mobile {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px 0px;
+            width: 100%;
+        }
+
+
+        @include tablet {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 45%;
+            padding: 0px 10px;
+            margin-left: 20px;
+        }
+
+        @include desktop {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 45%;
+            padding: 0px 10px;
+            margin-left: 20px;
+        }
     }
 }
 
@@ -155,11 +251,35 @@
         // align-items: center;
     }
 
+    &__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
     &__images {
-        height: 45vh;
-        // width: 80vw;
-        // width: 100%;
         padding: 10px;
+
+        @include mobile {
+            height: 45vh;
+            // width: 80vw;
+            // width: 100%;
+        }
+
+        @include tablet {
+            display: inline-flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 30%;
+        }
+
+        @include desktop {
+            display: inline-flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 30%;
+        }
     }
 }
 
@@ -173,15 +293,69 @@
     color: #ffffff;
     padding: 30px;
 
+    &__get-in-touch-section {
+
+        display: inline-flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%;
+
+        @include mobile {
+            flex-direction: column;
+        }
+
+        @include tablet {
+            width: 70%;
+        }
+
+        @include desktop {
+            width: 70%;
+        }
+
+        &--wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+    }
+
     &__heading {
         font-size: 30px;
 
+        @include tablet {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @include desktop {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     &__icons-list {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
+
+        @include mobile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @include tablet {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @include desktop {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
     }
 
     &__icons {
@@ -198,38 +372,52 @@
 
 .footer__card-wrapper {
     /* mobile */
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 100%;
-    margin: 20px auto;
+
+    @include mobile {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%;
+        margin: 20px auto;
+    }
 
     @include tablet {
-    /*
-    tablet + desktop 
-    */
-    display: inline-flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin: 20px 10px;
-    width: 30%;
+        display: inline-flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin: 20px 10px;
+        width: 30%;
+    }
+
+    @include desktop {
+        display: inline-flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin: 20px 10px;
+        width: 30%;
     }
 }
 
 .footer__card {
-
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
 
     @include tablet {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    color: #ffffff;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        color: #ffffff;
+    }
+
+    @include desktop {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        color: #ffffff;
     }
 
 

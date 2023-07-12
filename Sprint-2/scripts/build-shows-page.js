@@ -44,6 +44,27 @@ let showsList = [
 
 // console.log(showsList);
 
+let showsSubheading = document.querySelector(".shows-detail__subheading"); //parent
+// console.log(showsTable);
+
+let heading1Tablet = document.createElement("p");
+heading1Tablet.innerText = "DATE";
+heading1Tablet.classList.add("shows-detail__column");
+heading1Tablet.classList.add("shows-detail__column--tablet");
+showsSubheading.appendChild(heading1Tablet);
+
+let heading2Tablet = document.createElement("p");
+heading2Tablet.innerText = "VENUE";
+heading2Tablet.classList.add("shows-detail__column");
+heading2Tablet.classList.add("shows-detail__column--tablet");
+showsSubheading.appendChild(heading2Tablet);
+
+let heading3Tablet = document.createElement("p");
+heading3Tablet.innerText = "LOCATION";
+heading3Tablet.classList.add("shows-detail__column");
+heading3Tablet.classList.add("shows-detail__column--tablet");
+showsSubheading.appendChild(heading3Tablet);
+
 let showsTable = document.querySelector(".shows-detail__table"); //parent
 // console.log(showsTable);
 
@@ -53,10 +74,11 @@ for (let i = 0; i < showsList.length; i++) {
 
   //   let date = console.log(showsList[i].Date);
 
-  //   let heading1 = document.createElement("p");
-  //   heading1.innerText = "Date";
-  //   heading1.classList.add("shows-detail__column");
-  //   tableRow.appendChild(heading1);
+  let heading1 = document.createElement("p");
+  heading1.innerText = "DATE";
+  heading1.classList.add("shows-detail__column");
+  heading1.classList.add("shows-detail__column--mobile");
+  tableRow.appendChild(heading1);
 
   let date = document.createElement("p");
   date.innerText = showsList[i].Date;
@@ -65,12 +87,24 @@ for (let i = 0; i < showsList.length; i++) {
 
   //   showsTable.appendChild(tableRow);
 
+  let heading2 = document.createElement("p");
+  heading2.innerText = "VENUE";
+  heading2.classList.add("shows-detail__column");
+  heading2.classList.add("shows-detail__column--mobile");
+  tableRow.appendChild(heading2);
+
   let venue = document.createElement("p");
   venue.innerText = showsList[i].Venue;
   venue.classList.add("shows-details__list-items");
   tableRow.appendChild(venue);
 
   //   showsTable.appendChild(tableRow);
+
+  let heading3 = document.createElement("p");
+  heading3.innerText = "LOCATION";
+  heading3.classList.add("shows-detail__column");
+  heading3.classList.add("shows-detail__column--mobile");
+  tableRow.appendChild(heading3);
 
   let location = document.createElement("p");
   location.innerText = showsList[i].Location;

@@ -33,15 +33,6 @@ let showsList = [
   },
 ];
 
-// let showsList = [
-//   ["Mon Sept 06 2021", "Ronald Lane", "San Francisco, CA", "Buy Tickets"],
-//   ["Tue Sept 21 2021", "Pier 3 East", "San Francisco, CA", "Buy Tickets"],
-//   ["Fri Oct 15 2021", "View Lounge", "San Francisco, CA", "Buy Tickets"],
-//   ["Sat Nov 06 2021", "Hyatt Agency", "San Francisco, CA", "Buy Tickets"],
-//   ["Fri Nov 26 2021", "Moscow Center", "San Francisco, CA", "Buy Tickets"],
-//   ["Wed Dec 15 2021", "Press Club", "San Francisco, CA", "Buy Tickets"],
-// ];
-
 // console.log(showsList);
 
 let showsSubheading = document.querySelector(".shows-detail__subheading"); //parent
@@ -70,7 +61,9 @@ let showsTable = document.querySelector(".shows-detail__table"); //parent
 
 for (let i = 0; i < showsList.length; i++) {
   let tableRow = document.createElement("li");
-  tableRow.classList.add("shows-details__list");
+  tableRow.classList.add("shows-detail__list");
+  //   tableRow.classList.add("shows-detail__list:hover");
+  //   tableRow.classList.add("shows-detail__list--selected");
 
   //   let date = console.log(showsList[i].Date);
 
@@ -82,7 +75,7 @@ for (let i = 0; i < showsList.length; i++) {
 
   let date = document.createElement("p");
   date.innerText = showsList[i].Date;
-  date.classList.add("shows-details__list-items");
+  date.classList.add("shows-detail__list-items");
   tableRow.appendChild(date);
 
   //   showsTable.appendChild(tableRow);
@@ -95,7 +88,7 @@ for (let i = 0; i < showsList.length; i++) {
 
   let venue = document.createElement("p");
   venue.innerText = showsList[i].Venue;
-  venue.classList.add("shows-details__list-items");
+  venue.classList.add("shows-detail__list-items");
   tableRow.appendChild(venue);
 
   //   showsTable.appendChild(tableRow);
@@ -108,41 +101,36 @@ for (let i = 0; i < showsList.length; i++) {
 
   let location = document.createElement("p");
   location.innerText = showsList[i].Location;
-  location.classList.add("shows-details__list-items");
+  location.classList.add("shows-detail__list-items");
   tableRow.appendChild(location);
 
   //   showsTable.appendChild(tableRow);
 
   let button = document.createElement("button");
   button.innerText = "BUY TICKETS";
-  button.classList.add("shows-details__button");
+  //   button.classList.add("shows-detail__button");
+  button.classList.add("button");
+  button.classList.add("button--shows-detail");
   tableRow.appendChild(button);
 
   showsTable.appendChild(tableRow);
 }
 
-// for (let i = 0; i < showsList.length; i++) {
-//   let tableRow = document.createElement("ul");
-//   tableRow.classList.add("shows-details__list");
-
-//   console.log(tableRow);
-
-//   for (let j = 0; j < showsList[i].length; j++) {
-//     let tableData = document.createElement("li"); //child
-//     //   tableRow = showsList[i];
-//     tableData.innerText = showsList[i][j];
-//     // console.log(tableData);
-
-//     if (j == showsList[i].length - 1) {
-//       tableData.classList.add("shows-details__button");
-//     } else {
-//       tableData.classList.add("shows-details__list-items");
-//     }
-//     tableRow.appendChild(tableData);
-//     // showsTable.appendChild(tableData);
-//   }
-//   //   tableRow.appendChild(tableData);
-//   showsTable.appendChild(tableRow);
-// }
-
 // console.log(showsTable);
+
+let showsRowEl = document.querySelectorAll(".shows-detail__list");
+console.log(showsRowEl);
+
+for (let i = 0; i < showsRowEl.length; i++) {
+  showsRowEl[i].addEventListener("click", (event) => {
+    // window.location.reload();
+    // tableRow.classList.remove("shows-detail__list--selected");
+    // showsRowEl.reset();
+    // showsRowEl[i].classList.remove("shows-detail__list--selected");
+    for (let j = 0; j < showsRowEl.length; j++) {
+      showsRowEl[j].classList.remove("shows-detail__list--selected");
+    }
+    showsRowEl[i].classList.add("shows-detail__list--selected");
+    console.log(showsRowEl[i]);
+  });
+}

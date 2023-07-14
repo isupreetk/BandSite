@@ -19,27 +19,6 @@
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: "AvenirNext LT Pro";
-  src: url("../assets/fonts/AvenirNextLTPro-Regular_1.woff2") format("woff2"), url("../assets/fonts/AvenirNextLTPro-Regular_1.woff") format("woff"), url("../assets/fonts/AvenirNextLTPro-Regular_1.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "AvenirNext LT Pro";
-  src: url("../assets/fonts/AvenirNextLTPro-Demi_1.woff2") format("woff2"), url("../assets/fonts/AvenirNextLTPro-Demi_1.woff") format("woff"), url("../assets/fonts/AvenirNextLTPro-Demi_1.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "AvenirNext LT Pro";
-  src: url("../assets/fonts/AvenirNextLTPro-Bold_1.woff2") format("woff2"), url("../assets/fonts/AvenirNextLTPro-Bold_1.woff") format("woff"), url("../assets/fonts/AvenirNextLTPro-Bold_1.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
 body {
   font-weight: 400;
   color: #323232;
@@ -290,26 +269,66 @@ body {
   filter: none;
 }
 
-.join-the-conversation__comments {
+@media screen and (min-width: 768px) {
+  .comment__wrapper {
+    width: 67%;
+    margin: auto;
+  }
+}
+.comment__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #E1E1E1;
+}
+.comment__form-user-image {
+  border-radius: 50%;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .comment__form-user-image {
+    height: 36px;
+    width: 36px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .comment__form-user-image {
+    height: 48px;
+    width: 48px;
+  }
+}
+.comment__form-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.comment__result {
   padding-bottom: 10px;
   width: 34%;
   margin: auto;
 }
-
-.join-the-conversation__comment-details {
+@media screen and (min-width: 768px) {
+  .comment__result {
+    width: 100%;
+  }
+}
+.comment__result-details {
   display: inline-flex;
   align-items: center;
   width: 49%;
 }
-.join-the-conversation__comment-details--left {
+.comment__result-details--left {
   justify-content: flex-start;
 }
-.join-the-conversation__comment-details--center {
+.comment__result-details--center {
   width: 100%;
   border-bottom: 1px solid #E1E1E1;
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
-.join-the-conversation__comment-details--right {
+.comment__result-details--right {
   justify-content: flex-end;
 }/*# sourceMappingURL=bio.css.map */

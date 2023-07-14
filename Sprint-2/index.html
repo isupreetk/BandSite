@@ -108,53 +108,30 @@
         </div>
     </section>
 
-    <section>
+    <section class="comment">
         <h3 class="section-headings">Join The Conversation</h3>
-        <div class="join-the-conversation__comment-wrapper">
+        <div class="comment__wrapper">
 
-            <!-- <div class="join-the-conversation__comments">
-                /* <div class="join-the-conversation__commentee">
-                    <p class="join-the-conversation__comment-details">Connor Walton</p>
-                    <p class="join-the-conversation__comment-details">02/17/2021</p>
-                </div>
-                <div class="join-the-conversation__comment-content">
-                    This is art. This is inexplicable magic expressed in the purest way, everything that makes up this
-                        majestic work deserves reverence. Let us appreciate this for what it is and what it contains.
-                </div> */
-            </div>
-     -->
+     <form class="comment__form">
 
-            <div class="join-the-conversation__comments">
+        <img class="comment__form-user-image" 
+            src="./assets/images/Mohan-muruge.jpg" alt="Mohan Muruge Profile Image" >
+        <label for="commenteeName">Name</label>
+        <input type="text" class="comment__form-input" id="commenteeName" name="commenteeName" placeholder="Enter your name">
+        <label for="comment">Comment</label>
+        <textarea name="comment" class="comment__form-input" id="comment" name="comment" cols="30" rows="10" placeholder="Add a new comment"></textarea>
+        <button type="submit" class="button button--bio">COMMENT</button>
+     </form>
+
+            <div class="comment__result">
             
-                <!-- <p class="join-the-conversation__comment-details join-the-conversation__comment-details--left">Connor Walton</p>
-                <p class="join-the-conversation__comment-details join-the-conversation__comment-details--right">02/17/2021</p>
-                <p class="join-the-conversation__comment-details join-the-conversation__comment-details--center">
+                <!-- <p class="comment__result-details comment__result-details--left">Connor Walton</p>
+                <p class="comment__result-details comment__result-details--right">02/17/2021</p>
+                <p class="comment__result-details comment__result-details--center">
                 This is art. This is inexplicable magic expressed in the purest way, everything that makes up this
                     majestic work deserves reverence. Let us appreciate this for what it is and what it contains.
             </p> -->
         </div>
-
-            <!-- <div class="join-the-conversation__comments">
-            <div class="join-the-conversation__commentee">
-                <p class="join-the-conversation__comment-details">Emilie Beach</p>
-                <p class="join-the-conversation__comment-details">01/09/2021</p>
-            </div>
-            <div class="join-the-conversation__comment-content">
-                I feel blessed to have seen them in person. What a show! They were just perfection. If there was one
-                    day of my life I could relive, this would be it. What an incredible day.
-            </div>
-        </div>
-
-        <div class="join-the-conversation__comments">
-            <div class="join-the-conversation__commentee">
-                <p class="join-the-conversation__comment-details">Miles Acosta</p>
-                <p class="join-the-conversation__comment-details">12/20/2020</p>
-            </div>
-            <div class="join-the-conversation__comment-content">
-                I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps.
-                    Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.
-            </div>
-        </div> -->
     </div>
     </section>
 

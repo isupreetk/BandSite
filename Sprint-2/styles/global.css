@@ -19,27 +19,6 @@
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: "AvenirNext LT Pro";
-  src: url("../assets/fonts/AvenirNextLTPro-Regular_1.woff2") format("woff2"), url("../assets/fonts/AvenirNextLTPro-Regular_1.woff") format("woff"), url("../assets/fonts/AvenirNextLTPro-Regular_1.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "AvenirNext LT Pro";
-  src: url("../assets/fonts/AvenirNextLTPro-Demi_1.woff2") format("woff2"), url("../assets/fonts/AvenirNextLTPro-Demi_1.woff") format("woff"), url("../assets/fonts/AvenirNextLTPro-Demi_1.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "AvenirNext LT Pro";
-  src: url("../assets/fonts/AvenirNextLTPro-Bold_1.woff2") format("woff2"), url("../assets/fonts/AvenirNextLTPro-Bold_1.woff") format("woff"), url("../assets/fonts/AvenirNextLTPro-Bold_1.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
 * {
   font-family: "AvenirNext LT Pro", "Sans Serif";
   box-sizing: border-box;
@@ -195,11 +174,13 @@
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .hero {
     height: 12.5rem;
+    height: 500px;
   }
 }
 @media screen and (min-width: 768px) {
   .hero {
     height: 29.0625rem;
+    height: 30.0625rem;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -220,7 +201,6 @@
   height: 100%;
   width: 100%;
 }
-
 .hero__wrapper {
   display: flex;
   align-items: center;
@@ -228,16 +208,50 @@
   width: 100%;
   height: 100%;
 }
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .hero__wrapper {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 768px) {
+  .hero__wrapper {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .hero__wrapper {
+    flex-direction: row;
+  }
+}
 
 .hero-half {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
+  width: 100%;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .hero-half {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 768px) {
+  .hero-half {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-left: 60px;
+    padding-bottom: 5px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .hero-half {
+    display: inline-flex;
+    width: 50%;
+  }
 }
 
 .hero-text {
-  font-weight: 700;
+  font-weight: 400;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
@@ -257,7 +271,6 @@
   .hero-text {
     font-size: 3.75rem;
     line-height: 4.25rem;
-    padding-left: 2.5rem;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -270,6 +283,43 @@
 }
 .hero-text--main {
   font-size: 3rem;
+}
+@media screen and (min-width: 768px) {
+  .hero-text--main {
+    font-size: 2.689rem;
+    font-weight: 700;
+    padding-bottom: 20px;
+  }
+}
+
+.hero-player {
+  width: 40%;
+}
+@media screen and (min-width: 768px) {
+  .hero-player {
+    border-radius: 5px;
+    width: 56%;
+  }
+}
+
+.button {
+  background-color: #323232;
+  border-radius: 4px;
+  color: #FFFFFF;
+  height: 40px;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .button--shows-detail {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .button--shows-detail {
+    width: 15%;
+  }
+}
+.button--bio {
+  align-items: flex-start;
 }
 
 .footer {

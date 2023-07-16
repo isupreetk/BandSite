@@ -23,107 +23,6 @@ let commentsEl = document.querySelector(".comment__result"); //parent
 
 // console.log(commentsList.length);
 
-function displayComment() {
-  commentsEl.innerText = "";
-  commentsList.forEach((commentsListItem) => {
-    let commentImageEl = document.createElement("img");
-    commentImageEl.innerText = "";
-    commentImageEl.classList.add("comment__form-user-image");
-    // console.log(commentImageEl);
-    commentsEl.appendChild(commentImageEl);
-
-    let commentNameEl = document.createElement("p");
-    commentNameEl.innerText = commentsListItem.Name;
-    commentNameEl.classList.add("comment__result-details");
-    commentNameEl.classList.add("comment__result-details--left");
-    //   console.log(commentNameEl);
-    commentsEl.appendChild(commentNameEl);
-
-    let commentDateEl = document.createElement("p");
-    commentDateEl.innerText = dynamicTimestamp(new Date(commentsListItem.Date));
-    commentDateEl.classList.add("comment__result-details");
-    commentDateEl.classList.add("comment__result-details--right");
-    // console.log(commentDateEl);
-
-    commentsEl.appendChild(commentDateEl);
-
-    let commentTextEl = document.createElement("p");
-    commentTextEl.innerText = commentsListItem.Text;
-    commentTextEl.classList.add("comment__result-details");
-    commentTextEl.classList.add("comment__result-details--center");
-    //   console.log(commentTextEl);
-    commentsEl.appendChild(commentTextEl);
-  });
-}
-
-displayComment();
-
-let formEl = document.querySelector(".comment__form");
-console.log(formEl);
-
-formEl.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  //   console.log(event.target.commenteeName.value);
-  //   console.log(event.target.comment.value);
-
-  //   let commentDate = getFormattedDate(new Date()); //final line
-  let commentDate = new Date();
-  //   console.log(commentDate);
-  //   console.log(typeof commentDate);
-  //   console.log(commentDate.substring(4, 3));
-
-  //   getFormattedDate(commentDate);
-
-  let newComment = {
-    Name: event.target.commenteeName.value,
-    Date: commentDate,
-    // Date: commentTimeMessage,
-    Text: event.target.comment.value,
-  };
-  //   console.log(newComment);
-
-  commentsList.unshift(newComment);
-  console.log(commentsList);
-
-  displayComment();
-
-  formEl.reset();
-});
-
-let commentInputFieldEl = document.querySelectorAll(".comment__form-input");
-
-console.log(commentInputFieldEl);
-
-// for (let j = 0; j < commentInputFieldEl.length; j++) {
-//   commentInputFieldEl[j].addEventListener("click", (event) => {
-//     console.log(commentInputFieldEl[j]);
-
-//     for (let k = 0; k < commentInputFieldEl.length; k++) {
-//       commentInputFieldEl[k].classList.remove("comment__form-input--active");
-//     }
-
-//     commentInputFieldEl[j].classList.add("comment__form-input--active");
-//   });
-// }
-
-commentInputFieldEl.forEach((commentInputField) => {
-  //   console.log(commentInputField);
-  commentInputField.addEventListener("click", (event) => {
-    console.log(commentInputField);
-
-    // for (let k = 0; k < commentInputFieldEl.length; k++) {
-    //   commentInputFieldEl[k].classList.remove("comment__form-input--active");
-    // }
-
-    commentInputFieldEl.forEach((commentInputField) =>
-      commentInputField.classList.remove("comment__form-input--active")
-    );
-
-    commentInputField.classList.add("comment__form-input--active");
-  });
-});
-
 // function formatDateMMDDYYYY {
 //     let month = commentDate.splice
 // }
@@ -231,14 +130,152 @@ function dynamicTimestamp(commentDate) {
       return commentTimeMessage;
     }
   }
-
-  //   const date1 = new Date("7/13/2010");
-  //   const date2 = new Date("12/15/2010");
-  //   const diffTime = Math.abs(date2 - date1);
-  //   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  //   console.log(diffTime + " milliseconds");
-  //   console.log(diffDays + " days");
 }
+
+function displayComment() {
+  commentsEl.innerText = "";
+  commentsList.forEach((commentsListItem) => {
+    let commentImageEl = document.createElement("img");
+    commentImageEl.innerText = "";
+    commentImageEl.classList.add("comment__form-user-image");
+    // console.log(commentImageEl);
+    commentsEl.appendChild(commentImageEl);
+
+    let commentNameEl = document.createElement("p");
+    commentNameEl.innerText = commentsListItem.Name;
+    commentNameEl.classList.add("comment__result-details");
+    commentNameEl.classList.add("comment__result-details--left");
+    //   console.log(commentNameEl);
+    commentsEl.appendChild(commentNameEl);
+
+    let commentDateEl = document.createElement("p");
+    commentDateEl.innerText = dynamicTimestamp(new Date(commentsListItem.Date));
+    commentDateEl.classList.add("comment__result-details");
+    commentDateEl.classList.add("comment__result-details--right");
+    // console.log(commentDateEl);
+
+    commentsEl.appendChild(commentDateEl);
+
+    let commentTextEl = document.createElement("p");
+    commentTextEl.innerText = commentsListItem.Text;
+    commentTextEl.classList.add("comment__result-details");
+    commentTextEl.classList.add("comment__result-details--center");
+    //   console.log(commentTextEl);
+    commentsEl.appendChild(commentTextEl);
+  });
+}
+
+displayComment();
+
+let formEl = document.querySelector(".comment__form");
+console.log(formEl);
+
+let commenteeNameEl = document.getElementById("commenteeName");
+let commentEl = document.getElementById("comment");
+
+let errorMessageNameEl = document.querySelector(
+  ".comment__form-input-name-error"
+);
+let errorMessageCommentEl = document.querySelector(
+  ".comment__form-input-comment-error"
+);
+
+formEl.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  console.log(event.target.comment.value);
+
+  if (
+    event.target.commenteeName.value == "" ||
+    event.target.commenteeName.value == null ||
+    event.target.commenteeName.value == undefined
+  ) {
+    // alert("Please enter your Name.");
+
+    errorMessageNameEl.innerText = "Please enter your Name.";
+    commenteeNameEl.classList.add("comment__form-input--error");
+  } else if (
+    event.target.comment.value == "" ||
+    event.target.comment.value == null ||
+    event.target.comment.value == undefined
+  ) {
+    // alert("Please enter your Comment.");
+    errorMessageNameEl.innerText = "";
+    errorMessageCommentEl.innerText = "Please enter your Comment.";
+    commentEl.classList.add("comment__form-input--error");
+
+    // commentEl.classList.add("comment__form-input--error");
+    // commentInputFieldEl.forEach((commentInputField) =>
+    //   commentInputField.classList.add("comment__form-input--error")
+    // );
+  } else {
+    errorMessageNameEl.innerText = "";
+    errorMessageCommentEl.innerText = "";
+    //   console.log(event.target.commenteeName.value);
+    //   console.log(event.target.comment.value);
+
+    //   let commentDate = getFormattedDate(new Date()); //final line
+    let commentDate = new Date();
+    //   console.log(commentDate);
+    //   console.log(typeof commentDate);
+    //   console.log(commentDate.substring(4, 3));
+
+    //   getFormattedDate(commentDate);
+
+    let newComment = {
+      Name: event.target.commenteeName.value,
+      Date: commentDate,
+      // Date: commentTimeMessage,
+      Text: event.target.comment.value,
+    };
+    //   console.log(newComment);
+
+    commentsList.unshift(newComment);
+    console.log(commentsList);
+
+    displayComment();
+
+    formEl.reset();
+  }
+});
+
+// for (let j = 0; j < commentInputFieldEl.length; j++) {
+//   commentInputFieldEl[j].addEventListener("click", (event) => {
+//     console.log(commentInputFieldEl[j]);
+
+//     for (let k = 0; k < commentInputFieldEl.length; k++) {
+//       commentInputFieldEl[k].classList.remove("comment__form-input--active");
+//     }
+
+//     commentInputFieldEl[j].classList.add("comment__form-input--active");
+//   });
+// }
+
+let commentInputFieldEl = document.querySelectorAll(".comment__form-input");
+console.log(commentInputFieldEl);
+
+commentInputFieldEl.forEach((commentInputField) => {
+  //   console.log(commentInputField);
+  commentInputField.addEventListener("click", (event) => {
+    console.log(commentInputField);
+    // for (let k = 0; k < commentInputFieldEl.length; k++) {
+    //   commentInputFieldEl[k].classList.remove("comment__form-input--active");
+    // }
+    commentInputFieldEl.forEach((commentInputField) => {
+      commentInputField.classList.remove("comment__form-input--active");
+    });
+
+    commentInputField.classList.remove("comment__form-input--error");
+    commentInputField.classList.add("comment__form-input--active");
+  });
+});
+
+//   const date1 = new Date("7/13/2010");
+//   const date2 = new Date("12/15/2010");
+//   const diffTime = Math.abs(date2 - date1);
+//   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+//   console.log(diffTime + " milliseconds");
+//   console.log(diffDays + " days");
 
 //   //   timedeltainseconds = presentdate - commentdate;
 

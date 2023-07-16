@@ -25,7 +25,7 @@ let commentsEl = document.querySelector(".comment__result"); //parent
 
 function displayComment() {
   commentsEl.innerText = "";
-  for (let i = 0; i < commentsList.length; i++) {
+  commentsList.forEach((commentsListItem) => {
     let commentImageEl = document.createElement("img");
     commentImageEl.innerText = "";
     commentImageEl.classList.add("comment__form-user-image");
@@ -33,26 +33,27 @@ function displayComment() {
     commentsEl.appendChild(commentImageEl);
 
     let commentNameEl = document.createElement("p");
-    commentNameEl.innerText = commentsList[i].Name;
+    commentNameEl.innerText = commentsListItem.Name;
     commentNameEl.classList.add("comment__result-details");
     commentNameEl.classList.add("comment__result-details--left");
     //   console.log(commentNameEl);
     commentsEl.appendChild(commentNameEl);
 
     let commentDateEl = document.createElement("p");
-    commentDateEl.innerText = commentsList[i].Date;
+    commentDateEl.innerText = dynamicTimestamp(new Date(commentsListItem.Date));
     commentDateEl.classList.add("comment__result-details");
     commentDateEl.classList.add("comment__result-details--right");
-    //   console.log(commentDateEl);
+    // console.log(commentDateEl);
+
     commentsEl.appendChild(commentDateEl);
 
     let commentTextEl = document.createElement("p");
-    commentTextEl.innerText = commentsList[i].Text;
+    commentTextEl.innerText = commentsListItem.Text;
     commentTextEl.classList.add("comment__result-details");
     commentTextEl.classList.add("comment__result-details--center");
     //   console.log(commentTextEl);
     commentsEl.appendChild(commentTextEl);
-  }
+  });
 }
 
 displayComment();
@@ -66,7 +67,8 @@ formEl.addEventListener("submit", (event) => {
   //   console.log(event.target.commenteeName.value);
   //   console.log(event.target.comment.value);
 
-  let commentDate = getFormattedDate(new Date());
+  //   let commentDate = getFormattedDate(new Date()); //final line
+  let commentDate = new Date();
   //   console.log(commentDate);
   //   console.log(typeof commentDate);
   //   console.log(commentDate.substring(4, 3));
@@ -76,6 +78,7 @@ formEl.addEventListener("submit", (event) => {
   let newComment = {
     Name: event.target.commenteeName.value,
     Date: commentDate,
+    // Date: commentTimeMessage,
     Text: event.target.comment.value,
   };
   //   console.log(newComment);
@@ -84,8 +87,6 @@ formEl.addEventListener("submit", (event) => {
   console.log(commentsList);
 
   displayComment();
-
-  dynamicTimestamp();
 
   formEl.reset();
 });
@@ -107,7 +108,7 @@ console.log(commentInputFieldEl);
 // }
 
 commentInputFieldEl.forEach((commentInputField) => {
-//   console.log(commentInputField);
+  //   console.log(commentInputField);
   commentInputField.addEventListener("click", (event) => {
     console.log(commentInputField);
 
@@ -127,22 +128,117 @@ commentInputFieldEl.forEach((commentInputField) => {
 //     let month = commentDate.splice
 // }
 // timedeltainseconds / (60 * 60 * 24);
-function getFormattedDate(date) {
-  let year = date.getFullYear();
-  let month = (1 + date.getMonth()).toString().padStart(2, "0");
-  let day = date.getDate().toString().padStart(2, "0");
 
-  let commentDateMMDDYYYY = month + "/" + day + "/" + year;
-  //   console.log(commentDateMMDDYYYY);
-  return commentDateMMDDYYYY;
+// final function
+// function getFormattedDate(date) {
+//   let year = date.getFullYear();
+//   let month = (1 + date.getMonth()).toString().padStart(2, "0");
+//   let day = date.getDate().toString().padStart(2, "0");
+
+//   let commentDateMMDDYYYY = month + "/" + day + "/" + year;
+//   //   console.log(commentDateMMDDYYYY);
+//   return commentDateMMDDYYYY;
+// }
+
+function dynamicTimestamp(commentDate) {
+  //   let currentTimestamp = getFormattedDate(new Date());
+
+  let currentTimestamp = new Date();
+  let commentTimestamp = commentDate;
+
+  console.log(currentTimestamp);
+  console.log(commentTimestamp);
+
+  let diffMilliSeconds = Math.abs(currentTimestamp - commentTimestamp);
+  let diffSeconds = Math.floor(diffMilliSeconds / 1000);
+  let diffMinutes = Math.floor(diffSeconds / 60);
+  let diffHours = Math.floor(diffMinutes / 60);
+  let diffDays = Math.floor(diffHours / 24);
+  let diffMonths = Math.floor(diffDays / 30);
+  let diffYears = Math.floor(diffMonths / 12);
+
+  //   console.log(diffMilliSeconds + " milliseconds");
+  //   console.log(diffSeconds + " seconds");
+  //   console.log(diffMinutes + " minutes");
+  //   console.log(diffHours + " hours");
+  //   console.log(diffDays + " days");
+  //   console.log(diffMonths + " months");
+  //   console.log(diffYears + " years");
+
+  if (diffMinutes == 0) {
+    let commentTimeMessage = "less than a minute ago";
+    console.log(commentTimeMessage);
+    return commentTimeMessage;
+  } else if (
+    diffMinutes > 0 &&
+    diffHours == 0 &&
+    diffDays == 0 &&
+    diffMonths == 0 &&
+    diffYears == 0
+  ) {
+    if (diffMinutes == 1) {
+      let commentTimeMessage = diffMinutes + " minute ago";
+      console.log(commentTimeMessage);
+      return commentTimeMessage;
+    } else {
+      let commentTimeMessage = diffMinutes + " minutes ago";
+      console.log(commentTimeMessage);
+      return commentTimeMessage;
+    }
+  } else if (
+    diffHours > 0 &&
+    diffDays == 0 &&
+    diffMonths == 0 &&
+    diffYears == 0
+  ) {
+    if (diffHours == 1) {
+      let commentTimeMessage = diffHours + " hour ago";
+      console.log(commentTimeMessage);
+      return commentTimeMessage;
+    } else {
+      let commentTimeMessage = diffHours + " hours ago";
+      console.log(commentTimeMessage);
+      return commentTimeMessage;
+    }
+  } else if (diffDays > 0 && diffMonths == 0 && diffYears == 0) {
+    if (diffDays == 1) {
+      let commentTimeMessage = diffDays + " day ago";
+      console.log(commentTimeMessage);
+      return commentTimeMessage;
+    } else {
+      let commentTimeMessage = diffDays + " days ago";
+      console.log(commentTimeMessage);
+      return commentTimeMessage;
+    }
+  } else if (diffMonths > 0 && diffYears == 0) {
+    if (diffMonths == 1) {
+      let commentTimeMessage = diffMonths + " month ago";
+      console.log(commentTimeMessage);
+      return commentTimeMessage;
+    } else {
+      let commentTimeMessage = diffMonths + " months ago";
+      console.log(commentTimeMessage);
+      return commentTimeMessage;
+    }
+  } else if (diffYears > 0) {
+    if (diffYears == 1) {
+      let commentTimeMessage = diffYears + " year ago";
+      console.log(commentTimeMessage);
+      return commentTimeMessage;
+    } else {
+      let commentTimeMessage = diffYears + " years ago";
+      console.log(commentTimeMessage);
+      return commentTimeMessage;
+    }
+  }
+
+  //   const date1 = new Date("7/13/2010");
+  //   const date2 = new Date("12/15/2010");
+  //   const diffTime = Math.abs(date2 - date1);
+  //   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  //   console.log(diffTime + " milliseconds");
+  //   console.log(diffDays + " days");
 }
-
-// function dynamicTimestamp() {
-//   let currentTimestamp = getFormattedDate(new Date());
-//   let commentTimestamp = commentDate;
-
-//   console.log(currentTimestamp);
-//   console.log(commentTimestamp);
 
 //   //   timedeltainseconds = presentdate - commentdate;
 

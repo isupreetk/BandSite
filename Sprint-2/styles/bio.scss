@@ -462,6 +462,25 @@
 
 .comment {
 
+    margin-bottom: 2rem;
+
+    &__heading {
+        font-size: 1.875rem;
+
+        @include mobile {
+            margin-left: 0.625rem;
+        }
+
+        @include tablet {
+            margin-left: 1.5625rem;
+        }
+
+        @include desktop {
+            margin-left: 4.375rem;
+        }
+    }
+
+
     &__wrapper {
 
         // display: flex;
@@ -470,25 +489,37 @@
         // align-items: center;
         // width: 86%;
         // margin: auto;
+        color: #000000;
+
         @include tablet {
             width: 67%;
             margin: auto;
         }
+
+        @include desktop {
+            width: 38%;
+        }
+    }
+
+    &__label {
+        color: #323232;
+        margin-top: 0.625rem; //10px;
     }
 
     &__form {
         display: flex;
-        flex-direction: column;
+        // flex-direction: column; //commented for desktop
         justify-content: center;
         align-items: flex-start;
         margin-bottom: 0.625rem;
         padding-bottom: 0.625rem;
-        border-bottom: 1px solid #E1E1E1;
+        border-bottom: 5px solid #E1E1E1;
     }
 
     &__form-user-image {
         border-radius: 50%;
         background-color: #E1E1E1;
+        display: inline-flex;
 
         @include mobile {
             /* max heights and widths */
@@ -501,6 +532,25 @@
             height: 3rem; //48px;
             width: 3rem; //48px;
         }
+
+        @include desktop {
+            margin-top: 1.25rem; //20px;
+        }
+
+        &--result {
+            margin-top: 0rem;
+        }
+    }
+
+    &__form-div {
+        display: inline-flex; 
+        flex-direction: column;
+        width: 100%;
+
+        &--user-image {
+            width: 10%;
+            margin-right: 1rem;
+        }
     }
 
     &__form-input {
@@ -510,6 +560,11 @@
         border-radius: 4px;
         width: 100%;
         border: 1px solid #E1E1E1;
+        background-color: #FAFAFA;
+
+        &--textarea {
+            height: 7rem;
+        }
 
         &--active {
             outline: none;
@@ -534,6 +589,22 @@
         }
     }
 
+&__result-div {
+    width: 100%;
+    display: flex;
+    border-bottom: 5px solid #E1E1E1;
+    padding: 1rem 0rem; //15px 0px;
+
+    &--image {
+        width: 10%;
+        margin-right: 1rem;
+    }
+
+    &--detail {
+        width: 90%;
+    }
+}
+
     &__result {
         // margin-bottom: 20px;
         padding-bottom: 0.625rem;
@@ -545,6 +616,11 @@
         @include tablet {
             // width: 67%;
             width: 100%;
+        }
+
+        @include desktop {
+            display: flex;
+    flex-direction: column;
         }
     }
 
@@ -560,13 +636,17 @@
 
         &--center {
             width: 100%;
-            border-bottom: 1px solid #E1E1E1;
+            // border-bottom: 1px solid #E1E1E1;
             margin-bottom: 0.625rem;
             padding-bottom: 0.625rem;
         }
 
         &--right {
             justify-content: flex-end;
+        }
+
+        &--font-color {
+            color: #323232;
         }
     }
 

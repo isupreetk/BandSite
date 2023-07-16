@@ -121,36 +121,100 @@ function dynamicTimestamp(commentDate) {
   }
 }
 
+// function displayComment() {
+//   commentsEl.innerText = "";
+
+//   commentsList.forEach((commentsListItem) => {
+//     // let commentDivEl = document.createElement("div");
+//     // // commentDivEl.innerText = "";
+//     // commentDivEl.classList.add("comment__result-div");
+//     // // console.log(commentDivEl);
+//     // commentsEl.appendChild(commentDivEl);
+
+//     let commentImageEl = document.createElement("img");
+//     commentImageEl.innerText = "";
+//     commentImageEl.classList.add("comment__form-user-image");
+//     // console.log(commentImageEl);
+//     commentsEl.appendChild(commentImageEl);
+
+//     let commentNameEl = document.createElement("p");
+//     commentNameEl.innerText = commentsListItem.Name;
+//     commentNameEl.classList.add("comment__result-details");
+//     commentNameEl.classList.add("comment__result-details--left");
+//     //   console.log(commentNameEl);
+//     commentsEl.appendChild(commentNameEl);
+
+//     let commentDateEl = document.createElement("p");
+//     commentDateEl.innerText = dynamicTimestamp(new Date(commentsListItem.Date));
+//     commentDateEl.classList.add("comment__result-details");
+//     commentDateEl.classList.add("comment__result-details--right");
+//     // console.log(commentDateEl);
+
+//     commentsEl.appendChild(commentDateEl);
+
+//     let commentTextEl = document.createElement("p");
+//     commentTextEl.innerText = commentsListItem.Text;
+//     commentTextEl.classList.add("comment__result-details");
+//     commentTextEl.classList.add("comment__result-details--center");
+//     //   console.log(commentTextEl);
+//     commentsEl.appendChild(commentTextEl);
+//   });
+// }
+
 function displayComment() {
   commentsEl.innerText = "";
+
   commentsList.forEach((commentsListItem) => {
+    let commentDivEl = document.createElement("div");
+    // commentDivEl.innerText = "";
+    commentDivEl.classList.add("comment__result-div");
+    // console.log(commentDivEl);
+
+    let commentDivImageEl = document.createElement("div");
+    // commentDivEl.innerText = "";
+    commentDivImageEl.classList.add("comment__result-div--image");
+    // console.log(commentDivImageEl);
+
     let commentImageEl = document.createElement("img");
     commentImageEl.innerText = "";
     commentImageEl.classList.add("comment__form-user-image");
+    commentImageEl.classList.add("comment__form-user-image--result");
     // console.log(commentImageEl);
-    commentsEl.appendChild(commentImageEl);
+    commentDivImageEl.appendChild(commentImageEl);
+
+    commentDivEl.appendChild(commentDivImageEl);
+
+    let commentDivDetailEl = document.createElement("div");
+    // commentDivDetailEl.innerText = "";
+    commentDivDetailEl.classList.add("comment__result-div--detail");
+    // console.log(commentDivDetailEl);
 
     let commentNameEl = document.createElement("p");
     commentNameEl.innerText = commentsListItem.Name;
     commentNameEl.classList.add("comment__result-details");
     commentNameEl.classList.add("comment__result-details--left");
     //   console.log(commentNameEl);
-    commentsEl.appendChild(commentNameEl);
+    commentDivDetailEl.appendChild(commentNameEl);
 
     let commentDateEl = document.createElement("p");
     commentDateEl.innerText = dynamicTimestamp(new Date(commentsListItem.Date));
     commentDateEl.classList.add("comment__result-details");
     commentDateEl.classList.add("comment__result-details--right");
+    commentDateEl.classList.add("comment__result-details--font-color");
     // console.log(commentDateEl);
 
-    commentsEl.appendChild(commentDateEl);
+    commentDivDetailEl.appendChild(commentDateEl);
 
     let commentTextEl = document.createElement("p");
     commentTextEl.innerText = commentsListItem.Text;
     commentTextEl.classList.add("comment__result-details");
     commentTextEl.classList.add("comment__result-details--center");
     //   console.log(commentTextEl);
-    commentsEl.appendChild(commentTextEl);
+    commentDivDetailEl.appendChild(commentTextEl);
+
+    commentDivEl.appendChild(commentDivDetailEl);
+
+    commentsEl.appendChild(commentDivEl);
   });
 }
 

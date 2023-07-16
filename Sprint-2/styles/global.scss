@@ -43,6 +43,7 @@ body {
 
     @include desktop {
         padding-left: 4.5rem;
+        height: 85px;
     }
 
     &__content {
@@ -385,12 +386,20 @@ body {
 
 }
 
+.button-container {
+display: flex;
+justify-content: flex-end;
+align-items: center;
+margin: 1.25rem 0rem; // 20px 0px;
+}
 
 .button {
     background-color: #323232;
     // border-radius: 4px;
     color: #FFFFFF;
     height: 2.5rem; //40px;
+    height: 3.5rem; //desktop
+    font-size: 1rem;
     // max-height: 40px;
     // font-weight: 700;
     padding: 0rem 2rem; //0px 32px; //minimum
@@ -409,6 +418,10 @@ body {
         @include tablet {
             width: 15%;
             min-width: 9.375rem; //150px;
+        }
+
+        @include desktop {
+            width: 25%;
         }
     }
 

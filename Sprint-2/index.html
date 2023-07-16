@@ -110,21 +110,26 @@
     </section>
 
     <section class="comment">
-        <h3 class="section-headings">Join The Conversation</h3>
+        <h3 class="section-headings comment__heading">Join The Conversation</h3>
         <div class="comment__wrapper">
 
      <form class="comment__form">
-
+        <div class="comment__form-div comment__form-div--user-image">
         <img class="comment__form-user-image" 
             src="./assets/images/Mohan-muruge.jpg" alt="Mohan Muruge Profile Image" >
-        <label for="commenteeName">Name</label>
+        </div>
+        <div class="comment__form-div">
+        <label class="comment__label" for="commenteeName">NAME</label>
         <input type="text" class="comment__form-input" id="commenteeName" name="commenteeName" placeholder="Enter your name">
         <p id="commenteeNameError"></p>
-        <label for="comment">Comment</label>
-        <input name="comment" class="comment__form-input" id="comment" name="comment" cols="30" rows="10" 
+        <label class="comment__label" for="comment">COMMENT</label>
+        <input name="comment" class="comment__form-input comment__form-input--textarea" id="comment" name="comment" cols="30" rows="10" 
         placeholder="Add a new comment">
         <p id="commentError"></p>
+        <div class="button-container">
         <button type="submit" class="button button--bio">COMMENT</button>
+    </div>
+    </div>
      </form>
 
             <div class="comment__result">

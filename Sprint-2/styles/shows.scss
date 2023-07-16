@@ -3,7 +3,6 @@
 @use './partials/fonts' as *;
 
 .shows {
-
     &__container {
         display: flex;
         // display: inline-flex;
@@ -79,102 +78,102 @@
         }
     }
 
-        &__subheading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 0.625rem;
-            // width: 90%;
-            // width: 75%;
-            // width: 70%;
-            width: 69%;
+    &__subheading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0.625rem;
+        // width: 90%;
+        // width: 75%;
+        // width: 70%;
+        width: 69%;
 
-            @include tablet {
-                width: 83%;
-            }
-
-            @include desktop {
-                width: 69%;
-            }
+        @include tablet {
+            width: 83%;
         }
 
-        &__column {
+        @include desktop {
+            width: 69%;
+        }
+    }
+
+    &__column {
+        // display: inline-flex;
+        // // flex-direction: row;
+        // justify-content: flex-start;
+        // align-items: space-evenly;
+        // width: 70%;
+        width: 100%;
+        padding-bottom: 0.625rem;
+        // margin-bottom: 0.625rem;
+        // display: none;
+
+        @include mobile {
             // display: inline-flex;
             // // flex-direction: row;
             // justify-content: flex-start;
             // align-items: space-evenly;
-            // width: 70%;
-            width: 100%;
-            padding-bottom: 0.625rem;
-            // margin-bottom: 0.625rem;
-            // display: none;
+            display: none;
+        }
+
+        // }
+
+        @include tablet {
+            display: inline-flex;
+            // flex-direction: row;
+            justify-content: flex-start;
+            align-items: space-evenly;
+        }
+
+        &--card-view {
 
             @include mobile {
+                display: inline-flex;
+                // flex-direction: row;
+                justify-content: flex-start;
+                align-items: space-evenly;
+                // display:none;
+            }
+
+            @include tablet {
                 // display: inline-flex;
                 // // flex-direction: row;
                 // justify-content: flex-start;
                 // align-items: space-evenly;
                 display: none;
             }
+        }
 
-            // }
-
+        &--list-view {
             @include tablet {
-                display: inline-flex;
-                // flex-direction: row;
-                justify-content: flex-start;
-                align-items: space-evenly;
-            }
 
-            &--mobile {
-
-                @include mobile {
-                    display: inline-flex;
-                    // flex-direction: row;
-                    justify-content: flex-start;
-                    align-items: space-evenly;
-                    // display:none;
-                }
-
-                @include tablet {
-                    // display: inline-flex;
-                    // // flex-direction: row;
-                    // justify-content: flex-start;
-                    // align-items: space-evenly;
-                    display: none;
-                }
-            }
-
-            &--tablet {
-                @include tablet {
-
-                    //             display: inline-flex;
-                    // // flex-direction: row;
-                    // justify-content: flex-start;
-                    // align-items: space-evenly;
-                    //         flex-direction: row;
-                    //         width: 29%;
-                }
+                //             display: inline-flex;
+                // // flex-direction: row;
+                // justify-content: flex-start;
+                // align-items: space-evenly;
+                //         flex-direction: row;
+                //         width: 29%;
             }
         }
+    }
 
-        &__table {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            // align-items: space-evenly;
-            // width: 100%;
-            padding: 0rem; //0px;
+    &__table {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        // align-items: space-evenly;
+        // width: 100%;
+        padding: 0rem; //0px;
 
-            @include mobile {
-                padding-left: 1.25rem; //20px;
-                width: 95%;
-            }
-
-            @include desktop {
-                width: 100%;
-            }
+        @include mobile {
+            padding-left: 1.25rem; //20px;
+            width: 95%;
         }
+
+        @include desktop {
+            width: 100%;
+        }
+    }
 
     &__list {
         display: flex;
@@ -239,5 +238,5 @@
             font-size: 1.375rem; //22px;
         }
 
-}
+    }
 }

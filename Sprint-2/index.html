@@ -13,30 +13,31 @@
 <body>
     <header class="dark-background header">
         <!-- <a href="#" class="logo logo--nav">BANDSITE</a> -->
-        <img class="logo logo--nav" src="./assets/logos/Logo-bandsite.svg" alt="BANDSITE">
+        <a href="index.html"><img class="logo logo--nav" src="./assets/logos/Logo-bandsite.svg" alt="BANDSITE"></a>
         <div class="header__content">
             <a href="index.html">
-                <h2 class="header__nav header__nav--selected header__nav:hover">Biography</h2>
+                <h2 class="header__nav header__nav--selected">Biography</h2>
             </a>
             <a href="./pages/shows.html">
-                <h2 class="header__nav header__nav:hover">Shows</h2>
+                <h2 class="header__nav">Shows</h2>
+
             </a>
         </div>
     </header>
 
     <div class="hero hero--bio">
         <div class="hero__overlay">
-            <span class="hero-text">The Bees Knees</span>
+            <span class="hero__text">The Bees Knees</span>
         </div>
     </div>
 
-    <section class="about-container">
-        <div class="about-wrapper">
-            <div class="about-heading">
+    <section class="about">
+        <div class="about__wrapper">
+            <div class="about__heading">
                 <h3 class="section-headings">About the Musicians</h3>
             </div>
-            <div class="about-align">
-                <div class="about">
+            <div class="about__section">
+                <div class="about__container">
                     <img class="about__image" src="./assets/images/band.jpg" alt="band.jpg">
                     <p class="about__quote">“We push each other to be the best. It’s not
                         uncommon for one of us to say ‘this needs
@@ -87,23 +88,23 @@
     <section class="alternate-light-background photo-gallery">
         <h3 class="section-headings photo-gallery__heading">Photo Gallery</h3>
         <div class="photo-gallery__wrapper">
-            <img class="photo-gallery__images photo-gallery__images:hover" src="./assets/images/Photo-gallery-1.jpg"
+            <img class="photo-gallery__images" src="./assets/images/Photo-gallery-1.jpg"
                 alt="Photo-gallery-1.jpg">
-            <img class="photo-gallery__images photo-gallery__images:hover" src="./assets/images/Photo-gallery-2.jpg"
+            <img class="photo-gallery__images" src="./assets/images/Photo-gallery-2.jpg"
                 alt="Photo-gallery-2.jpg">
-            <img class="photo-gallery__images photo-gallery__images:hover" src="./assets/images/Photo-gallery-3.jpg"
+            <img class="photo-gallery__images" src="./assets/images/Photo-gallery-3.jpg"
                 alt="Photo-gallery-3.jpg">
-            <img class="photo-gallery__images photo-gallery__images:hover" src="./assets/images/Photo-gallery-4.jpg"
+            <img class="photo-gallery__images" src="./assets/images/Photo-gallery-4.jpg"
                 alt="Photo-gallery-4.jpg">
-            <img class="photo-gallery__images photo-gallery__images:hover" src="./assets/images/Photo-gallery-5.jpg"
+            <img class="photo-gallery__images" src="./assets/images/Photo-gallery-5.jpg"
                 alt="Photo-gallery-5.jpg">
-            <img class="photo-gallery__images photo-gallery__images:hover" src="./assets/images/Photo-gallery-6.jpg"
+            <img class="photo-gallery__images" src="./assets/images/Photo-gallery-6.jpg"
                 alt="Photo-gallery-6.jpg">
-            <img class="photo-gallery__images photo-gallery__images:hover" src="./assets/images/Photo-gallery-7.jpg"
+            <img class="photo-gallery__images" src="./assets/images/Photo-gallery-7.jpg"
                 alt="Photo-gallery-7.jpg">
-            <img class="photo-gallery__images photo-gallery__images:hover" src="./assets/images/Photo-gallery-8.jpg"
+            <img class="photo-gallery__images" src="./assets/images/Photo-gallery-8.jpg"
                 alt="Photo-gallery-8.jpg">
-            <img class="photo-gallery__images photo-gallery__images:hover" src="./assets/images/Photo-gallery-9.jpg"
+            <img class="photo-gallery__images" src="./assets/images/Photo-gallery-9.jpg"
                 alt="Photo-gallery-9.jpg">
         </div>
     </section>
@@ -118,11 +119,11 @@
             src="./assets/images/Mohan-muruge.jpg" alt="Mohan Muruge Profile Image" >
         <label for="commenteeName">Name</label>
         <input type="text" class="comment__form-input" id="commenteeName" name="commenteeName" placeholder="Enter your name">
-        <p class="comment__form-input-name-error"></p>
+        <p id="commenteeNameError"></p>
         <label for="comment">Comment</label>
         <input name="comment" class="comment__form-input" id="comment" name="comment" cols="30" rows="10" 
         placeholder="Add a new comment">
-        <p class="comment__form-input-comment-error"></p>
+        <p id="commentError"></p>
         <button type="submit" class="button button--bio">COMMENT</button>
      </form>
 
@@ -139,8 +140,8 @@
     </section>
 
     <footer class="dark-background footer">
-        <div class="footer__get-in-touch-section--wrapper">
-            <div class="footer__get-in-touch-section">
+        <div class="footer__section-wrapper">
+            <div class="footer__section">
                 <h3 class="section-headings section-headings--footer footer__heading">Get in Touch</h3>
                 <div class="footer__icons-list">
                     <a href="https://www.instagram.com/"><img class="footer__icons"
@@ -156,54 +157,54 @@
             <img class="logo logo--tablet" src="./assets/logos/Logo-bandsite.svg" alt="BANDSITE">
         </div>
 
-        <div class="footer__card-container">
-            <div class="footer__card-wrapper">
-                <div class="footer__card">
-                    <div class="footer__card--name">
+        <div class="footer-card">
+            <div class="footer-card__wrapper">
+                <div class="footer-card__container">
+                    <div class="footer-card__name">
                         <p>Cam Adams</p>
                         <p>The Bees Knees Management</p>
                     </div>
-                    <div class="footer__card--role">
+                    <div class="footer-card__role">
                         <p>503 Broadway Penthouse,</p>
                         <p>New York, NY 10012, USA</p>
                     </div>
-                    <div class="footer__card--contact">
+                    <div class="footer-card__contact">
                         <p><a href="mailto:info@thebeesknees.com"
-                                class="footer__card--contact-link">info@thebeesknees.com</a></p>
+                                class="footer-card__contact-link">info@thebeesknees.com</a></p>
                     </div>
                 </div>
             </div>
 
-            <div class="footer__card-wrapper">
-                <div class="footer__card">
-                    <div class="footer__card--name">
+            <div class="footer-card__wrapper">
+                <div class="footer-card__container">
+                    <div class="footer-card__name">
                         <p>Pearl Gregg</p>
                         <p>Limitless Artist Group</p>
                     </div>
-                    <div class="footer__card--role">
+                    <div class="footer-card__role">
                         <p>Booking Agent for</p>
                         <p>US / South America / Japan</p>
                     </div>
-                    <div class="footer__card--contact">
+                    <div class="footer-card__contact">
                         <p><a href="mailto:pearl.gregg@limitlessag.com"
-                                class="footer__card--contact-link">pearl.gregg@limitlessag.com</a></p>
+                                class="footer-card__contact-link">pearl.gregg@limitlessag.com</a></p>
                     </div>
                 </div>
             </div>
 
-            <div class="footer__card-wrapper">
-                <div class="footer__card">
-                    <div class="footer__card--name">
+            <div class="footer-card__wrapper">
+                <div class="footer-card__container">
+                    <div class="footer-card__name">
                         <p>Carson Whyte</p>
                         <p>ARCH Entertainment</p>
                     </div>
-                    <div class="footer__card--role">
+                    <div class="footer-card__role">
                         <p>Booking Agent for</p>
                         <p>UK / EU / AU</p>
                     </div>
-                    <div class="footer__card--contact">
+                    <div class="footer-card__contact">
                         <p><a href="mailto:cwhyte@archentertainment.com"
-                                class="footer__card--contact-link">cwhyte@archentertainment.com</a></p>
+                                class="footer-card__contact-link">cwhyte@archentertainment.com</a></p>
                     </div>
                 </div>
             </div>

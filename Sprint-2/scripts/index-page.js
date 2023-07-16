@@ -1,4 +1,4 @@
-console.log("Index is now connected!");
+// console.log("Index is now connected!");
 
 let commentsList = [
   {
@@ -19,16 +19,7 @@ let commentsList = [
 ];
 
 let commentsEl = document.querySelector(".comment__result"); //parent
-// console.log(commentsEl);
 
-// console.log(commentsList.length);
-
-// function formatDateMMDDYYYY {
-//     let month = commentDate.splice
-// }
-// timedeltainseconds / (60 * 60 * 24);
-
-// final function
 // function getFormattedDate(date) {
 //   let year = date.getFullYear();
 //   let month = (1 + date.getMonth()).toString().padStart(2, "0");
@@ -40,13 +31,11 @@ let commentsEl = document.querySelector(".comment__result"); //parent
 // }
 
 function dynamicTimestamp(commentDate) {
-  //   let currentTimestamp = getFormattedDate(new Date());
-
   let currentTimestamp = new Date();
   let commentTimestamp = commentDate;
 
-  console.log(currentTimestamp);
-  console.log(commentTimestamp);
+  //   console.log(currentTimestamp);
+  //   console.log(commentTimestamp);
 
   let diffMilliSeconds = Math.abs(currentTimestamp - commentTimestamp);
   let diffSeconds = Math.floor(diffMilliSeconds / 1000);
@@ -66,7 +55,7 @@ function dynamicTimestamp(commentDate) {
 
   if (diffMinutes == 0) {
     let commentTimeMessage = "less than a minute ago";
-    console.log(commentTimeMessage);
+    // console.log(commentTimeMessage);
     return commentTimeMessage;
   } else if (
     diffMinutes > 0 &&
@@ -77,11 +66,11 @@ function dynamicTimestamp(commentDate) {
   ) {
     if (diffMinutes == 1) {
       let commentTimeMessage = diffMinutes + " minute ago";
-      console.log(commentTimeMessage);
+      //   console.log(commentTimeMessage);
       return commentTimeMessage;
     } else {
       let commentTimeMessage = diffMinutes + " minutes ago";
-      console.log(commentTimeMessage);
+      //   console.log(commentTimeMessage);
       return commentTimeMessage;
     }
   } else if (
@@ -92,41 +81,41 @@ function dynamicTimestamp(commentDate) {
   ) {
     if (diffHours == 1) {
       let commentTimeMessage = diffHours + " hour ago";
-      console.log(commentTimeMessage);
+      //   console.log(commentTimeMessage);
       return commentTimeMessage;
     } else {
       let commentTimeMessage = diffHours + " hours ago";
-      console.log(commentTimeMessage);
+      //   console.log(commentTimeMessage);
       return commentTimeMessage;
     }
   } else if (diffDays > 0 && diffMonths == 0 && diffYears == 0) {
     if (diffDays == 1) {
       let commentTimeMessage = diffDays + " day ago";
-      console.log(commentTimeMessage);
+      //   console.log(commentTimeMessage);
       return commentTimeMessage;
     } else {
       let commentTimeMessage = diffDays + " days ago";
-      console.log(commentTimeMessage);
+      //   console.log(commentTimeMessage);
       return commentTimeMessage;
     }
   } else if (diffMonths > 0 && diffYears == 0) {
     if (diffMonths == 1) {
       let commentTimeMessage = diffMonths + " month ago";
-      console.log(commentTimeMessage);
+      //   console.log(commentTimeMessage);
       return commentTimeMessage;
     } else {
       let commentTimeMessage = diffMonths + " months ago";
-      console.log(commentTimeMessage);
+      //   console.log(commentTimeMessage);
       return commentTimeMessage;
     }
   } else if (diffYears > 0) {
     if (diffYears == 1) {
       let commentTimeMessage = diffYears + " year ago";
-      console.log(commentTimeMessage);
+      //   console.log(commentTimeMessage);
       return commentTimeMessage;
     } else {
       let commentTimeMessage = diffYears + " years ago";
-      console.log(commentTimeMessage);
+      //   console.log(commentTimeMessage);
       return commentTimeMessage;
     }
   }
@@ -168,27 +157,27 @@ function displayComment() {
 displayComment();
 
 let formEl = document.querySelector(".comment__form");
-console.log(formEl);
+// console.log(formEl);
 
 let commenteeNameEl = document.getElementById("commenteeName");
 let commentEl = document.getElementById("comment");
 
-let errorMessageNameEl = document.querySelector(
-  ".comment__form-input-name-error"
-);
-let errorMessageCommentEl = document.querySelector(
-  ".comment__form-input-comment-error"
-);
+let errorMessageNameEl = document.getElementById("commenteeNameError");
+let errorMessageCommentEl = document.getElementById("commentError");
 
 formEl.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  console.log(event.target.comment.value);
+  //   console.log(event.target.comment.value);
 
   if (
     event.target.commenteeName.value == "" ||
     event.target.commenteeName.value == null ||
     event.target.commenteeName.value == undefined
+
+    // errorMessageNameEl.value == "" ||
+    // errorMessageNameEl.value == null ||
+    // errorMessageNameEl.value == undefined
   ) {
     // alert("Please enter your Name.");
 
@@ -198,6 +187,10 @@ formEl.addEventListener("submit", (event) => {
     event.target.comment.value == "" ||
     event.target.comment.value == null ||
     event.target.comment.value == undefined
+
+    // errorMessageCommentEl == "" ||
+    // errorMessageCommentEl == null ||
+    // errorMessageCommentEl == undefined
   ) {
     // alert("Please enter your Comment.");
     errorMessageNameEl.innerText = "";
@@ -231,7 +224,7 @@ formEl.addEventListener("submit", (event) => {
     //   console.log(newComment);
 
     commentsList.unshift(newComment);
-    console.log(commentsList);
+    // console.log(commentsList);
 
     displayComment();
 
@@ -252,12 +245,12 @@ formEl.addEventListener("submit", (event) => {
 // }
 
 let commentInputFieldEl = document.querySelectorAll(".comment__form-input");
-console.log(commentInputFieldEl);
+// console.log(commentInputFieldEl);
 
 commentInputFieldEl.forEach((commentInputField) => {
   //   console.log(commentInputField);
   commentInputField.addEventListener("click", (event) => {
-    console.log(commentInputField);
+    // console.log(commentInputField);
     // for (let k = 0; k < commentInputFieldEl.length; k++) {
     //   commentInputFieldEl[k].classList.remove("comment__form-input--active");
     // }
@@ -269,20 +262,3 @@ commentInputFieldEl.forEach((commentInputField) => {
     commentInputField.classList.add("comment__form-input--active");
   });
 });
-
-//   const date1 = new Date("7/13/2010");
-//   const date2 = new Date("12/15/2010");
-//   const diffTime = Math.abs(date2 - date1);
-//   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-//   console.log(diffTime + " milliseconds");
-//   console.log(diffDays + " days");
-
-//   //   timedeltainseconds = presentdate - commentdate;
-
-//   // if less than 1 minute show x seconds
-//   // 1.) if less than 1 hours show in minutes
-//   // 2.) if greater than 1 hour then show x hours y minutes
-//   // 3.) if greater than 24 hours then show x days ago
-//   // 4.) if greater than 30 days then show x month(s) ago
-//   // 5.) if greater than 12 months show x years ago
-// }

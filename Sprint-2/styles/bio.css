@@ -19,48 +19,6 @@
   font-style: normal;
   font-display: swap;
 }
-body {
-  font-weight: 400;
-  color: #323232;
-}
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  body {
-    font-size: 0.8125rem;
-    line-height: 1.125rem;
-  }
-}
-@media screen and (min-width: 768px) {
-  body {
-    font-size: 0.875rem;
-    line-height: 1.375rem;
-  }
-}
-
-.section-headings {
-  color: #323232;
-  font-weight: 700;
-}
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  .section-headings {
-    font-size: 1.5rem;
-    line-height: 2rem;
-    margin-left: 0.9375rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1rem;
-  }
-}
-@media screen and (min-width: 768px) {
-  .section-headings {
-    font-size: 2.25rem;
-    line-height: 2.75rem;
-    padding-top: 3rem;
-    padding-bottom: 2.25rem;
-  }
-}
-.section-headings--footer {
-  color: #ffffff;
-}
-
 .about-container {
   width: 100%;
   padding-bottom: 1rem;
@@ -280,33 +238,59 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
+  margin-bottom: 0.625rem;
+  padding-bottom: 0.625rem;
   border-bottom: 1px solid #E1E1E1;
 }
 .comment__form-user-image {
   border-radius: 50%;
+  background-color: #E1E1E1;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .comment__form-user-image {
-    height: 36px;
-    width: 36px;
+    /* max heights and widths */
+    height: 2.25rem;
+    width: 2.25rem;
   }
 }
 @media screen and (min-width: 768px) {
   .comment__form-user-image {
-    height: 48px;
-    width: 48px;
+    /* max heights and widths */
+    height: 3rem;
+    width: 3rem;
   }
 }
 .comment__form-input {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 4px;
   width: 100%;
+  border: 1px solid #E1E1E1;
+}
+.comment__form-input--active {
+  outline: none;
+  border: 1px solid #323232;
+}
+.comment__form-input--error {
+  border: 1px solid #D22D2D;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .comment__form-input {
+    min-height: 2.25rem;
+    padding: 0.75rem;
+    margin-top: 4px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .comment__form-input {
+    min-height: 3rem;
+    padding: 1rem;
+    margin-top: 4px;
+  }
 }
 .comment__result {
-  padding-bottom: 10px;
+  padding-bottom: 0.625rem;
   width: 34%;
   margin: auto;
 }
@@ -326,8 +310,8 @@ body {
 .comment__result-details--center {
   width: 100%;
   border-bottom: 1px solid #E1E1E1;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
+  margin-bottom: 0.625rem;
+  padding-bottom: 0.625rem;
 }
 .comment__result-details--right {
   justify-content: flex-end;

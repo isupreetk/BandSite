@@ -35,102 +35,175 @@ let showsList = [
 
 // console.log(showsList);
 
-let showsSubheading = document.querySelector(".shows-detail__subheading"); //parent
+let showsSubheadingEl = document.querySelector(".shows-detail__subheading"); //parent
 // console.log(showsTable);
 
-let heading1Tablet = document.createElement("p");
-heading1Tablet.innerText = "DATE";
-heading1Tablet.classList.add("shows-detail__column");
-heading1Tablet.classList.add("shows-detail__column--tablet");
-showsSubheading.appendChild(heading1Tablet);
+let heading1TabletEl = document.createElement("p");
+heading1TabletEl.innerText = "DATE";
+heading1TabletEl.classList.add("shows-detail__column");
+heading1TabletEl.classList.add("shows-detail__column--tablet");
+showsSubheadingEl.appendChild(heading1TabletEl);
 
-let heading2Tablet = document.createElement("p");
-heading2Tablet.innerText = "VENUE";
-heading2Tablet.classList.add("shows-detail__column");
-heading2Tablet.classList.add("shows-detail__column--tablet");
-showsSubheading.appendChild(heading2Tablet);
+let heading2TabletEl = document.createElement("p");
+heading2TabletEl.innerText = "VENUE";
+heading2TabletEl.classList.add("shows-detail__column");
+heading2TabletEl.classList.add("shows-detail__column--tablet");
+showsSubheadingEl.appendChild(heading2TabletEl);
 
-let heading3Tablet = document.createElement("p");
-heading3Tablet.innerText = "LOCATION";
-heading3Tablet.classList.add("shows-detail__column");
-heading3Tablet.classList.add("shows-detail__column--tablet");
-showsSubheading.appendChild(heading3Tablet);
+let heading3TabletEl = document.createElement("p");
+heading3TabletEl.innerText = "LOCATION";
+heading3TabletEl.classList.add("shows-detail__column");
+heading3TabletEl.classList.add("shows-detail__column--tablet");
+showsSubheadingEl.appendChild(heading3TabletEl);
 
-let showsTable = document.querySelector(".shows-detail__table"); //parent
-// console.log(showsTable);
+let showsTableEl = document.querySelector(".shows-detail__table"); //parent
+// console.log(showsTableEl);
 
-for (let i = 0; i < showsList.length; i++) {
-  let tableRow = document.createElement("li");
-  tableRow.classList.add("shows-detail__list");
+// for (let i = 0; i < showsList.length; i++) {
+//   let tableRowEl = document.createElement("li");
+//   tableRowEl.classList.add("shows-detail__list");
+//   //   tableRow.classList.add("shows-detail__list:hover");
+//   //   tableRow.classList.add("shows-detail__list--selected");
+
+//   //   let date = console.log(showsList[i].Date);
+
+//   let heading1MobileEl = document.createElement("p");
+//   heading1MobileEl.innerText = "DATE";
+//   heading1MobileEl.classList.add("shows-detail__column");
+//   heading1MobileEl.classList.add("shows-detail__column--mobile");
+//   tableRowEl.appendChild(heading1MobileEl);
+
+//   let dateEl = document.createElement("p");
+//   dateEl.innerText = showsList[i].Date;
+//   dateEl.classList.add("shows-detail__list-items");
+//   tableRowEl.appendChild(dateEl);
+
+//   //   showsTableEl.appendChild(tableRowEl);
+
+//   let heading2MobileEl = document.createElement("p");
+//   heading2MobileEl.innerText = "VENUE";
+//   heading2MobileEl.classList.add("shows-detail__column");
+//   heading2MobileEl.classList.add("shows-detail__column--mobile");
+//   tableRowEl.appendChild(heading2MobileEl);
+
+//   let venueEl = document.createElement("p");
+//   venueEl.innerText = showsList[i].Venue;
+//   venueEl.classList.add("shows-detail__list-items");
+//   tableRowEl.appendChild(venueEl);
+
+//   //   showsTableEl.appendChild(tableRowEl);
+
+//   let heading3MobileEl = document.createElement("p");
+//   heading3MobileEl.innerText = "LOCATION";
+//   heading3MobileEl.classList.add("shows-detail__column");
+//   heading3MobileEl.classList.add("shows-detail__column--mobile");
+//   tableRowEl.appendChild(heading3MobileEl);
+
+//   let locationEl = document.createElement("p");
+//   locationEl.innerText = showsList[i].Location;
+//   locationEl.classList.add("shows-detail__list-items");
+//   tableRowEl.appendChild(locationEl);
+
+//   //   showsTableEl.appendChild(tableRowEl);
+
+//   let buttonEl = document.createElement("button");
+//   buttonEl.innerText = "BUY TICKETS";
+//   //   buttonEl.classList.add("shows-detail__button");
+//   buttonEl.classList.add("button");
+//   buttonEl.classList.add("button--shows-detail");
+//   tableRowEl.appendChild(buttonEl);
+
+//   showsTableEl.appendChild(tableRowEl);
+// }
+
+// // console.log(showsTableEl);
+
+// let showsRowEl = document.querySelectorAll(".shows-detail__list");
+// console.log(showsRowEl);
+
+// for (let i = 0; i < showsRowEl.length; i++) {
+//   showsRowEl[i].addEventListener("click", (event) => {
+//     // window.location.reload();
+//     // tableRow.classList.remove("shows-detail__list--selected");
+//     // showsRowEl.reset();
+//     // showsRowEl[i].classList.remove("shows-detail__list--selected");
+//     for (let j = 0; j < showsRowEl.length; j++) {
+//       showsRowEl[j].classList.remove("shows-detail__list--selected");
+//     }
+//     showsRowEl[i].classList.add("shows-detail__list--selected");
+//     console.log(showsRowEl[i]);
+//   });
+// }
+
+showsList.forEach((showsListItem) => {
+  //   console.log(showsList);
+  let tableRowEl = document.createElement("li");
+  tableRowEl.classList.add("shows-detail__list");
   //   tableRow.classList.add("shows-detail__list:hover");
   //   tableRow.classList.add("shows-detail__list--selected");
 
-  //   let date = console.log(showsList[i].Date);
+  //   let date = console.log(showsListItem.Date);
 
-  let heading1 = document.createElement("p");
-  heading1.innerText = "DATE";
-  heading1.classList.add("shows-detail__column");
-  heading1.classList.add("shows-detail__column--mobile");
-  tableRow.appendChild(heading1);
+  let heading1MobileEl = document.createElement("p");
+  heading1MobileEl.innerText = "DATE";
+  heading1MobileEl.classList.add("shows-detail__column");
+  heading1MobileEl.classList.add("shows-detail__column--mobile");
+  tableRowEl.appendChild(heading1MobileEl);
 
-  let date = document.createElement("p");
-  date.innerText = showsList[i].Date;
-  date.classList.add("shows-detail__list-items");
-  tableRow.appendChild(date);
+  let dateEl = document.createElement("p");
+  dateEl.innerText = showsListItem.Date;
+  dateEl.classList.add("shows-detail__list-items");
+  tableRowEl.appendChild(dateEl);
 
-  //   showsTable.appendChild(tableRow);
+  //   showsTableEl.appendChild(tableRowEl);
 
-  let heading2 = document.createElement("p");
-  heading2.innerText = "VENUE";
-  heading2.classList.add("shows-detail__column");
-  heading2.classList.add("shows-detail__column--mobile");
-  tableRow.appendChild(heading2);
+  let heading2MobileEl = document.createElement("p");
+  heading2MobileEl.innerText = "VENUE";
+  heading2MobileEl.classList.add("shows-detail__column");
+  heading2MobileEl.classList.add("shows-detail__column--mobile");
+  tableRowEl.appendChild(heading2MobileEl);
 
-  let venue = document.createElement("p");
-  venue.innerText = showsList[i].Venue;
-  venue.classList.add("shows-detail__list-items");
-  tableRow.appendChild(venue);
+  let venueEl = document.createElement("p");
+  venueEl.innerText = showsListItem.Venue;
+  venueEl.classList.add("shows-detail__list-items");
+  tableRowEl.appendChild(venueEl);
 
-  //   showsTable.appendChild(tableRow);
+  //   showsTableEl.appendChild(tableRowEl);
 
-  let heading3 = document.createElement("p");
-  heading3.innerText = "LOCATION";
-  heading3.classList.add("shows-detail__column");
-  heading3.classList.add("shows-detail__column--mobile");
-  tableRow.appendChild(heading3);
+  let heading3MobileEl = document.createElement("p");
+  heading3MobileEl.innerText = "LOCATION";
+  heading3MobileEl.classList.add("shows-detail__column");
+  heading3MobileEl.classList.add("shows-detail__column--mobile");
+  tableRowEl.appendChild(heading3MobileEl);
 
-  let location = document.createElement("p");
-  location.innerText = showsList[i].Location;
-  location.classList.add("shows-detail__list-items");
-  tableRow.appendChild(location);
+  let locationEl = document.createElement("p");
+  locationEl.innerText = showsListItem.Location;
+  locationEl.classList.add("shows-detail__list-items");
+  tableRowEl.appendChild(locationEl);
 
-  //   showsTable.appendChild(tableRow);
+  //   showsTableEl.appendChild(tableRowEl);
 
-  let button = document.createElement("button");
-  button.innerText = "BUY TICKETS";
-  //   button.classList.add("shows-detail__button");
-  button.classList.add("button");
-  button.classList.add("button--shows-detail");
-  tableRow.appendChild(button);
+  let buttonEl = document.createElement("button");
+  buttonEl.innerText = "BUY TICKETS";
+  //   buttonEl.classList.add("shows-detail__button");
+  buttonEl.classList.add("button");
+  buttonEl.classList.add("button--shows-detail");
+  tableRowEl.appendChild(buttonEl);
 
-  showsTable.appendChild(tableRow);
-}
+  showsTableEl.appendChild(tableRowEl);
+});
 
-// console.log(showsTable);
+// console.log(showsTableEl);
 
 let showsRowEl = document.querySelectorAll(".shows-detail__list");
-console.log(showsRowEl);
+// console.log(showsRowEl);
 
-for (let i = 0; i < showsRowEl.length; i++) {
-  showsRowEl[i].addEventListener("click", (event) => {
-    // window.location.reload();
-    // tableRow.classList.remove("shows-detail__list--selected");
-    // showsRowEl.reset();
-    // showsRowEl[i].classList.remove("shows-detail__list--selected");
-    for (let j = 0; j < showsRowEl.length; j++) {
-      showsRowEl[j].classList.remove("shows-detail__list--selected");
-    }
-    showsRowEl[i].classList.add("shows-detail__list--selected");
-    console.log(showsRowEl[i]);
+showsRowEl.forEach((showsRow) => {
+  showsRow.addEventListener("click", (event) => {
+    showsRowEl.forEach((showsRow) => {
+      showsRow.classList.remove("shows-detail__list--selected");
+    });
+    showsRow.classList.add("shows-detail__list--selected");
+    // console.log(showsRowEl[i]);
   });
-}
+});

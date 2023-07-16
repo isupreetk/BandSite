@@ -19,35 +19,39 @@ let commentsList = [
 ];
 
 let commentsEl = document.querySelector(".comment__result"); //parent
-// console.log(comments);
+// console.log(commentsEl);
 
 // console.log(commentsList.length);
 
 function displayComment() {
   commentsEl.innerText = "";
   for (let i = 0; i < commentsList.length; i++) {
-    let commentName = document.createElement("p");
-    commentName.innerText = commentsList[i].Name;
-    commentName.classList.add("comment__result-details");
-    commentName.classList.add("comment__result-details--left");
-    //   console.log(commentName);
-    commentsEl.appendChild(commentName);
+    let commentImageEl = document.createElement("img");
+    commentImageEl.innerText = "";
+    commentImageEl.classList.add("comment__form-user-image");
+    // console.log(commentImageEl);
+    commentsEl.appendChild(commentImageEl);
 
-    let commentDate = document.createElement("p");
-    commentDate.innerText = commentsList[i].Date;
-    commentDate.classList.add("comment__result-details");
-    commentDate.classList.add("comment__result-details--right");
-    //   console.log(commentDate);
-    commentsEl.appendChild(commentDate);
+    let commentNameEl = document.createElement("p");
+    commentNameEl.innerText = commentsList[i].Name;
+    commentNameEl.classList.add("comment__result-details");
+    commentNameEl.classList.add("comment__result-details--left");
+    //   console.log(commentNameEl);
+    commentsEl.appendChild(commentNameEl);
 
-    let commentText = document.createElement("p");
-    commentText.innerText = commentsList[i].Text;
-    commentText.classList.add("comment__result-details");
-    commentText.classList.add("comment__result-details--center");
-    //   console.log(commentDate);
-    commentsEl.appendChild(commentText);
+    let commentDateEl = document.createElement("p");
+    commentDateEl.innerText = commentsList[i].Date;
+    commentDateEl.classList.add("comment__result-details");
+    commentDateEl.classList.add("comment__result-details--right");
+    //   console.log(commentDateEl);
+    commentsEl.appendChild(commentDateEl);
 
-    // comment.classList.add();
+    let commentTextEl = document.createElement("p");
+    commentTextEl.innerText = commentsList[i].Text;
+    commentTextEl.classList.add("comment__result-details");
+    commentTextEl.classList.add("comment__result-details--center");
+    //   console.log(commentTextEl);
+    commentsEl.appendChild(commentTextEl);
   }
 }
 
@@ -62,8 +66,12 @@ formEl.addEventListener("submit", (event) => {
   //   console.log(event.target.commenteeName.value);
   //   console.log(event.target.comment.value);
 
-  let commentDate = new Date();
+  let commentDate = getFormattedDate(new Date());
   //   console.log(commentDate);
+  //   console.log(typeof commentDate);
+  //   console.log(commentDate.substring(4, 3));
+
+  //   getFormattedDate(commentDate);
 
   let newComment = {
     Name: event.target.commenteeName.value,
@@ -75,9 +83,73 @@ formEl.addEventListener("submit", (event) => {
   commentsList.unshift(newComment);
   console.log(commentsList);
 
-  /* need to put in function */
-
   displayComment();
+
+  dynamicTimestamp();
 
   formEl.reset();
 });
+
+let commentInputFieldEl = document.querySelectorAll(".comment__form-input");
+
+console.log(commentInputFieldEl);
+
+// for (let j = 0; j < commentInputFieldEl.length; j++) {
+//   commentInputFieldEl[j].addEventListener("click", (event) => {
+//     console.log(commentInputFieldEl[j]);
+
+//     for (let k = 0; k < commentInputFieldEl.length; k++) {
+//       commentInputFieldEl[k].classList.remove("comment__form-input--active");
+//     }
+
+//     commentInputFieldEl[j].classList.add("comment__form-input--active");
+//   });
+// }
+
+commentInputFieldEl.forEach((commentInputField) => {
+//   console.log(commentInputField);
+  commentInputField.addEventListener("click", (event) => {
+    console.log(commentInputField);
+
+    // for (let k = 0; k < commentInputFieldEl.length; k++) {
+    //   commentInputFieldEl[k].classList.remove("comment__form-input--active");
+    // }
+
+    commentInputFieldEl.forEach((commentInputField) =>
+      commentInputField.classList.remove("comment__form-input--active")
+    );
+
+    commentInputField.classList.add("comment__form-input--active");
+  });
+});
+
+// function formatDateMMDDYYYY {
+//     let month = commentDate.splice
+// }
+// timedeltainseconds / (60 * 60 * 24);
+function getFormattedDate(date) {
+  let year = date.getFullYear();
+  let month = (1 + date.getMonth()).toString().padStart(2, "0");
+  let day = date.getDate().toString().padStart(2, "0");
+
+  let commentDateMMDDYYYY = month + "/" + day + "/" + year;
+  //   console.log(commentDateMMDDYYYY);
+  return commentDateMMDDYYYY;
+}
+
+// function dynamicTimestamp() {
+//   let currentTimestamp = getFormattedDate(new Date());
+//   let commentTimestamp = commentDate;
+
+//   console.log(currentTimestamp);
+//   console.log(commentTimestamp);
+
+//   //   timedeltainseconds = presentdate - commentdate;
+
+//   // if less than 1 minute show x seconds
+//   // 1.) if less than 1 hours show in minutes
+//   // 2.) if greater than 1 hour then show x hours y minutes
+//   // 3.) if greater than 24 hours then show x days ago
+//   // 4.) if greater than 30 days then show x month(s) ago
+//   // 5.) if greater than 12 months show x years ago
+// }

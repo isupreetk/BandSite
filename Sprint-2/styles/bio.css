@@ -268,23 +268,31 @@
   align-items: flex-start;
   margin-bottom: 0.625rem;
   padding-bottom: 0.625rem;
-  border-bottom: 5px solid #E1E1E1;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .comment__form {
+    border-bottom: 3px solid #e1e1e1;
+    width: 95%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .comment__form {
+    border-bottom: 5px solid #e1e1e1;
+  }
 }
 .comment__form-user-image {
   border-radius: 50%;
-  background-color: #E1E1E1;
+  background-color: #e1e1e1;
   display: inline-flex;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .comment__form-user-image {
-    /* max heights and widths */
     height: 2.25rem;
     width: 2.25rem;
   }
 }
 @media screen and (min-width: 768px) {
   .comment__form-user-image {
-    /* max heights and widths */
     height: 3rem;
     width: 3rem;
   }
@@ -300,7 +308,16 @@
 .comment__form-div {
   display: inline-flex;
   flex-direction: column;
-  width: 100%;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .comment__form-div {
+    width: 75%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .comment__form-div {
+    width: 100%;
+  }
 }
 .comment__form-div--user-image {
   width: 10%;
@@ -312,8 +329,8 @@
   align-items: center;
   border-radius: 4px;
   width: 100%;
-  border: 1px solid #E1E1E1;
-  background-color: #FAFAFA;
+  border: 1px solid #e1e1e1;
+  background-color: #fafafa;
 }
 .comment__form-input--textarea {
   height: 7rem;
@@ -323,7 +340,7 @@
   border: 1px solid #323232;
 }
 .comment__form-input--error {
-  border: 1px solid #D22D2D;
+  border: 1px solid #d22d2d;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .comment__form-input {
@@ -342,8 +359,17 @@
 .comment__result-div {
   width: 100%;
   display: flex;
-  border-bottom: 5px solid #E1E1E1;
   padding: 1rem 0rem;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .comment__result-div {
+    border-bottom: 3px solid #e1e1e1;
+  }
+}
+@media screen and (min-width: 768px) {
+  .comment__result-div {
+    border-bottom: 5px solid #e1e1e1;
+  }
 }
 .comment__result-div--image {
   width: 10%;
@@ -354,8 +380,12 @@
 }
 .comment__result {
   padding-bottom: 0.625rem;
-  width: 34%;
   margin: auto;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .comment__result {
+    width: 90%;
+  }
 }
 @media screen and (min-width: 768px) {
   .comment__result {

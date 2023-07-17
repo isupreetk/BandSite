@@ -58,7 +58,7 @@ body {
   .header {
     justify-content: flex-start;
     flex-direction: row;
-    height: 120px;
+    height: 90px;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -90,8 +90,9 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1.25rem 0rem 0.625rem 0rem;
-  color: #E1E1E1;
+  color: #e1e1e1;
   font-weight: 400;
+  text-decoration: none;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .header__nav {
@@ -100,10 +101,9 @@ body {
 }
 @media screen and (min-width: 768px) {
   .header__nav {
-    /*commented in sprint-2 */
     margin-right: 4.875rem;
-    padding: 2.7rem 0rem;
-    font-size: 1.4rem;
+    padding: 1.9rem 0rem;
+    font-size: 0.8rem;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -137,9 +137,6 @@ body {
   .logo {
     padding: 0rem;
   }
-}
-.logo--nav {
-  /* not for mobile */
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .logo--nav {
@@ -192,7 +189,7 @@ body {
 }
 
 .alternate-light-background {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 
 .hero {
@@ -203,15 +200,12 @@ body {
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .hero {
-    height: 12.5rem;
-    height: 31.25rem;
+    height: 15.25rem;
   }
 }
 @media screen and (min-width: 768px) {
   .hero {
     height: 29.0625rem;
-    height: 30.0625rem;
-    height: 50.5rem;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -279,8 +273,12 @@ body {
     width: 50%;
   }
 }
-.hero__player {
-  width: 40%;
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .hero__player {
+    height: 70%;
+    margin-left: 20px;
+    width: 90%;
+  }
 }
 @media screen and (min-width: 768px) {
   .hero__player {
@@ -326,8 +324,19 @@ body {
   font-size: 1.5rem;
   font-weight: 600;
 }
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .hero__text--sub {
+    font-size: 0.75rem;
+  }
+}
 .hero__text--main {
   font-size: 3rem;
+  font-weight: 600;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .hero__text--main {
+    font-size: 1rem;
+  }
 }
 @media screen and (min-width: 768px) {
   .hero__text--main {
@@ -340,8 +349,6 @@ body {
   .hero__text--main {
     font-size: 2.7rem;
     line-height: 3.5rem;
-    /* letter-spacing: 0.01rem; */
-    /* width: 100%; */
     padding-bottom: 1.875rem;
   }
 }
@@ -380,13 +387,21 @@ body {
 
 .button {
   background-color: #323232;
-  color: #FFFFFF;
-  height: 2.5rem;
-  height: 3.5rem;
+  color: #ffffff;
   font-size: 1rem;
   padding: 0rem 2rem;
   border-radius: 7px;
   cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  .button {
+    height: 2.5rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .button {
+    height: 3.5rem;
+  }
 }
 .button:hover {
   background-color: #000000;
@@ -398,8 +413,10 @@ body {
 }
 @media screen and (min-width: 768px) {
   .button--shows-detail {
-    width: 15%;
+    width: 27%;
     min-width: 9.375rem;
+    margin: 0.625rem 0rem;
+    height: 2.5rem;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -409,6 +426,17 @@ body {
 }
 .button--bio {
   align-items: flex-start;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .button {
+    width: 100%;
+    padding: 0.5rem 2rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .button {
+    width: 35%;
+  }
 }
 
 .footer {
@@ -492,7 +520,6 @@ body {
 @media screen and (min-width: 1280px) {
   .footer__heading {
     margin-left: 0rem;
-    /* sprint 2 */
     font-size: 2.3rem;
     line-height: 2rem;
     font-weight: 700;

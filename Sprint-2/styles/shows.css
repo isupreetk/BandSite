@@ -54,7 +54,6 @@
   .shows__heading {
     display: inline-flex;
     width: 20%;
-    padding-left: 4.0625rem;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -74,9 +73,8 @@
 .shows-detail__wrapper {
   display: flex;
   flex-direction: column;
-  /* commented for desktop */
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
 }
 @media screen and (min-width: 768px) {
@@ -96,10 +94,12 @@
   align-items: center;
   margin-bottom: 0.625rem;
   width: 69%;
+  color: #afafaf;
 }
 @media screen and (min-width: 768px) {
   .shows-detail__subheading {
-    width: 83%;
+    width: 75%;
+    margin-left: 1rem;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -110,6 +110,7 @@
 .shows-detail__column {
   width: 100%;
   padding-bottom: 0.625rem;
+  color: #afafaf;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .shows-detail__column {
@@ -147,6 +148,11 @@
     width: 95%;
   }
 }
+@media screen and (min-width: 768px) {
+  .shows-detail__table {
+    width: 100%;
+  }
+}
 @media screen and (min-width: 1280px) {
   .shows-detail__table {
     width: 100%;
@@ -156,7 +162,7 @@
   display: flex;
   list-style-type: none;
   width: 80%;
-  border-bottom: 1px solid #E1E1E1;
+  border-bottom: 1px solid #e1e1e1;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .shows-detail__list {
@@ -170,7 +176,7 @@
 @media screen and (min-width: 768px) {
   .shows-detail__list {
     width: 97%;
-    padding: 1.5rem 1.125rem;
+    padding: 0rem 1.125rem;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -180,10 +186,10 @@
   }
 }
 .shows-detail__list--selected {
-  background-color: #E1E1E1;
+  background-color: #e1e1e1;
 }
 .shows-detail__list:hover:not(.shows-detail__list--selected) {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 .shows-detail__list-items {
   display: inline-flex;
@@ -195,12 +201,13 @@
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .shows-detail__list-items {
     width: 100%;
+    font-weight: 600;
   }
 }
 @media screen and (min-width: 768px) {
   .shows-detail__list-items {
     width: 30%;
-    font-size: 1.375rem;
+    font-size: 1.1rem;
   }
 }
 @media screen and (min-width: 1280px) {

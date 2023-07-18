@@ -1,0 +1,588 @@
+@use "./partials/variables" as *;
+@use "./partials/mixins" as *;
+@use "./partials/fonts" as *;
+
+* {
+  font-family: "AvenirNext LT Pro", "Sans Serif";
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+body {
+  font-weight: 400;
+  color: #323232;
+
+  @include mobile {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+  }
+
+  @include tablet {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  width: 100%;
+
+  @include mobile {
+    flex-direction: column;
+  }
+
+  @include tablet {
+    justify-content: flex-start;
+    flex-direction: row;
+    height: 90px;
+  }
+
+  @include desktop {
+    padding-left: 4.5rem;
+    height: 85px;
+  }
+
+  &__content {
+    @include mobile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      font-size: 0.625rem;
+      line-height: 1.25rem;
+    }
+
+    @include tablet {
+      display: inline-flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-left: 6.0625rem;
+    }
+  }
+
+  &__nav {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.25rem 0rem 0.625rem 0rem;
+    color: #e1e1e1;
+    font-weight: 400;
+    text-decoration: none;
+
+    @include mobile {
+      width: 50%;
+    }
+
+    @include tablet {
+      margin-right: 4.875rem;
+      padding: 1.9rem 0rem;
+      font-size: 0.8rem;
+    }
+
+    @include desktop {
+      padding: 1.8rem 0rem;
+    }
+
+    &--selected {
+      color: #ffffff;
+      border-bottom: 3px solid #ffffff;
+      font-weight: 700;
+    }
+
+    &:hover {
+      color: #ffffff;
+      border-bottom: 3px solid #ffffff;
+    }
+  }
+}
+
+.logo {
+  text-decoration: none;
+  color: #ffffff;
+  display: none;
+  font-size: 1.5rem;
+  line-height: 2rem;
+
+  @include mobile {
+    padding: 1.25rem 0rem 0.3125rem 0rem;
+  }
+
+  @include tablet {
+    padding: 0rem;
+  }
+
+  &--nav {
+    @include mobile {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @include tablet {
+      display: inline-flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-left: 2.5rem;
+      max-height: 1.25rem;
+      max-width: 7.5rem;
+    }
+
+    @include desktop {
+      margin-right: 0rem;
+    }
+  }
+
+  &--mobile {
+    @include mobile {
+      display: inline-block;
+      padding-bottom: 0.9375rem;
+      padding-top: 2.8125rem;
+    }
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &--tablet {
+    @include mobile {
+      display: none;
+    }
+
+    @include tablet {
+      display: inline-block;
+      padding-left: 2.5rem;
+    }
+  }
+}
+
+.dark-background {
+  background-color: #323232;
+}
+
+.alternate-light-background {
+  background-color: #fafafa;
+}
+
+.hero {
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  position: relative;
+
+  @include mobile {
+    height: 15.25rem;
+  }
+
+  @include tablet {
+    height: 29.0625rem;
+  }
+
+  @include desktop {
+    height: 39rem;
+  }
+
+  &--bio {
+    background-image: url(../assets/images/hero-bio.jpg);
+  }
+
+  &--shows {
+    background-image: url(../assets/images/hero-shows.jpg);
+  }
+
+  &__overlay {
+    position: absolute;
+    background: rgba(50, 50, 50, 0.5);
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    @include mobile {
+      flex-direction: column;
+    }
+
+    @include tablet {
+      flex-direction: column;
+    }
+
+    @include desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__half {
+    width: 100%;
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include tablet {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      padding-left: 3.75rem;
+      padding-bottom: 0.3125rem;
+    }
+
+    @include desktop {
+      display: inline-flex;
+      width: 50%;
+    }
+  }
+
+  &__player {
+    @include mobile {
+      height: 70%;
+      margin-left: 20px;
+      width: 90%;
+    }
+
+    @include tablet {
+      border-radius: 5px;
+      width: 56%;
+    }
+
+    @include desktop {
+      width: 75%;
+    }
+  }
+
+  &__text {
+    font-weight: 400;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 54%;
+    height: 100%;
+    color: #ffffff;
+
+    @include mobile {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      padding-left: 1.375rem;
+    }
+
+    @include tablet {
+      font-size: 3.75rem;
+      line-height: 4.25rem;
+    }
+
+    @include desktop {
+      padding-left: 5rem;
+      width: 74%;
+    }
+
+    &--sub {
+      font-size: 1.5rem;
+      font-weight: 600;
+
+      @include mobile {
+        font-size: 0.75rem;
+      }
+    }
+
+    &--main {
+      font-size: 3rem;
+      font-weight: 600;
+
+      @include mobile {
+        font-size: 1rem;
+      }
+
+      @include tablet {
+        font-size: 2.689rem;
+        font-weight: 600;
+        padding-bottom: 1.25rem;
+      }
+
+      @include desktop {
+        font-size: 2.7rem;
+        line-height: 3.5rem;
+        padding-bottom: 1.875rem;
+      }
+    }
+  }
+}
+
+.section-headings {
+  color: #323232;
+  font-weight: 700;
+
+  @include mobile {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-left: 0.9375rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  @include tablet {
+    font-size: 3.75rem;
+    line-height: 2.75rem;
+    padding-top: 3rem;
+    padding-bottom: 2.25rem;
+  }
+
+  &--footer {
+    color: #ffffff;
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 1.25rem 0rem;
+}
+
+.button {
+  background-color: #323232;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 0rem 2rem;
+  border-radius: 7px;
+  cursor: pointer;
+
+  @include tablet {
+    height: 2.5rem;
+  }
+
+  @include desktop {
+    height: 3.5rem;
+  }
+
+  &:hover {
+    background-color: #000000;
+  }
+
+  &--shows-detail {
+    @include mobile {
+      width: 100%;
+    }
+
+    @include tablet {
+      width: 27%;
+      min-width: 9.375rem;
+      margin: 0.625rem 0rem;
+      height: 2.5rem;
+    }
+
+    @include desktop {
+      width: 25%;
+    }
+  }
+
+  &--bio {
+    align-items: flex-start;
+  }
+
+  @include mobile {
+    width: 100%;
+    padding: 0.5rem 2rem;
+  }
+
+  @include tablet {
+    width: 35%;
+  }
+}
+
+.footer {
+  width: 100%;
+  color: #ffffff;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1.25rem 0.625rem;
+
+  @include mobile {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+  }
+
+  @include tablet {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  &__section-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    @include tablet {
+      padding-left: 1.25rem;
+    }
+
+    @include desktop {
+      padding-left: 5.8125rem;
+      padding-top: 1.5625rem;
+    }
+  }
+
+  &__section {
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+
+    @include mobile {
+      flex-direction: column;
+    }
+
+    @include tablet {
+      width: 70%;
+      flex-direction: row;
+    }
+
+    @include desktop {
+      width: 70%;
+    }
+  }
+
+  &__heading {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    padding: 0rem;
+
+    @include mobile {
+      margin-left: 0rem;
+    }
+
+    @include tablet {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @include desktop {
+      margin-left: 0rem;
+      font-size: 2.3rem;
+      line-height: 2rem;
+      font-weight: 700;
+      padding-right: 2rem;
+    }
+  }
+
+  &__icons-list {
+    @include mobile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: -0.625rem;
+    }
+
+    @include tablet {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 0.8125rem;
+      margin-top: -0.625rem;
+    }
+  }
+
+  &__icons {
+    height: 3.125rem;
+    width: 3.125rem;
+    padding: 0.625rem;
+  }
+
+  &__trademark {
+    @include mobile {
+      font-size: 0.71875rem;
+    }
+
+    @include tablet {
+      padding-left: 1.25rem;
+    }
+
+    @include desktop {
+      padding-left: 5.81825rem;
+      margin-bottom: 1.25rem;
+    }
+  }
+}
+
+.footer-card {
+  width: 100%;
+
+  @include tablet {
+    padding: 0rem 0.625rem;
+  }
+
+  @include desktop {
+    padding: 0rem 5.3rem;
+  }
+
+  &__wrapper {
+    @include mobile {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 100%;
+      margin: 0.625rem auto;
+    }
+
+    @include tablet {
+      display: inline-flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin: 1.25rem 0.625rem;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+
+    @include tablet {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-evenly;
+      color: #ffffff;
+    }
+
+    @include desktop {
+      padding-right: 3.125rem;
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  &__name {
+    margin: 0.625rem 0rem;
+    font-weight: 700;
+  }
+
+  &__role {
+    margin: 0.625rem 0rem;
+  }
+
+  &__contact {
+    margin: 0.625rem 0rem;
+  }
+
+  &__contact-link {
+    text-decoration: none;
+    color: #ffffff;
+  }
+}

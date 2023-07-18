@@ -21,18 +21,6 @@ const commentsURL =
 //   },
 // ];
 
-// axios.get(commentsURL).then((response) => {
-//   // console.log(response.data);
-//   let commentsList = response.data;
-//   console.log(commentsList);
-
-// commentsList.forEach((commentsListItem) => {
-//   console.log(commentsListItem.name);
-//   console.log(commentsListItem.timestamp);
-//   console.log(commentsListItem.comment);
-//   });
-// });
-
 let commentsEl = document.querySelector(".comment__result");
 
 function dynamicTimestamp(commentDate) {
@@ -104,70 +92,78 @@ function dynamicTimestamp(commentDate) {
   }
 }
 
-// function fetchCommentsAPIData() {
-
-// }
-
-function displayComment() {
+function displayComment(commentsList) {
   commentsEl.innerText = "";
 
-  axios.get(commentsURL).then((response) => {
-    // console.log(response.data);
-    let commentsList = response.data;
-    // console.log(commentsList);
+  commentsList.forEach((commentsListItem) => {
+    let commentDivEl = document.createElement("div");
+    commentDivEl.classList.add("comment__result-div");
 
-    commentsList.forEach((commentsListItem) => {
-      let commentDivEl = document.createElement("div");
-      commentDivEl.classList.add("comment__result-div");
+    let commentDivImageEl = document.createElement("div");
+    commentDivImageEl.classList.add("comment__result-div--image");
 
-      let commentDivImageEl = document.createElement("div");
-      commentDivImageEl.classList.add("comment__result-div--image");
+    let commentImageEl = document.createElement("img");
+    commentImageEl.innerText = "";
+    commentImageEl.classList.add("comment__form-user-image");
+    commentImageEl.classList.add("comment__form-user-image--result");
 
-      let commentImageEl = document.createElement("img");
-      commentImageEl.innerText = "";
-      commentImageEl.classList.add("comment__form-user-image");
-      commentImageEl.classList.add("comment__form-user-image--result");
+    commentDivImageEl.appendChild(commentImageEl);
 
-      commentDivImageEl.appendChild(commentImageEl);
+    commentDivEl.appendChild(commentDivImageEl);
 
-      commentDivEl.appendChild(commentDivImageEl);
+    let commentDivDetailEl = document.createElement("div");
+    commentDivDetailEl.classList.add("comment__result-div--detail");
 
-      let commentDivDetailEl = document.createElement("div");
-      commentDivDetailEl.classList.add("comment__result-div--detail");
+    let commentNameEl = document.createElement("p");
+    commentNameEl.innerText = commentsListItem.name;
+    commentNameEl.classList.add("comment__result-details");
+    commentNameEl.classList.add("comment__result-details--left");
 
-      let commentNameEl = document.createElement("p");
-      commentNameEl.innerText = commentsListItem.name;
-      commentNameEl.classList.add("comment__result-details");
-      commentNameEl.classList.add("comment__result-details--left");
+    commentDivDetailEl.appendChild(commentNameEl);
 
-      commentDivDetailEl.appendChild(commentNameEl);
+    let commentDateEl = document.createElement("p");
+    commentDateEl.innerText = dynamicTimestamp(
+      new Date(commentsListItem.timestamp)
+    );
+    commentDateEl.classList.add("comment__result-details");
+    commentDateEl.classList.add("comment__result-details--right");
+    commentDateEl.classList.add("comment__result-details--font-color");
 
-      let commentDateEl = document.createElement("p");
-      commentDateEl.innerText = dynamicTimestamp(
-        new Date(commentsListItem.timestamp)
-      );
-      commentDateEl.classList.add("comment__result-details");
-      commentDateEl.classList.add("comment__result-details--right");
-      commentDateEl.classList.add("comment__result-details--font-color");
+    commentDivDetailEl.appendChild(commentDateEl);
 
-      commentDivDetailEl.appendChild(commentDateEl);
+    let commentTextEl = document.createElement("p");
+    commentTextEl.innerText = commentsListItem.comment;
+    commentTextEl.classList.add("comment__result-details");
+    commentTextEl.classList.add("comment__result-details--center");
 
-      let commentTextEl = document.createElement("p");
-      commentTextEl.innerText = commentsListItem.comment;
-      commentTextEl.classList.add("comment__result-details");
-      commentTextEl.classList.add("comment__result-details--center");
+    commentDivDetailEl.appendChild(commentTextEl);
 
-      commentDivDetailEl.appendChild(commentTextEl);
+    commentDivEl.appendChild(commentDivDetailEl);
 
-      commentDivEl.appendChild(commentDivDetailEl);
-
-      commentsEl.appendChild(commentDivEl);
-    });
+    commentsEl.appendChild(commentDivEl);
   });
-  // });
 }
 
-displayComment();
+function fetchCommentsAPIData() {
+  axios
+    .get(commentsURL)
+    .then((response) => {
+      // console.log(response.data);
+      let commentsArray = response.data;
+      // console.log(commentsList);
+
+      commentsArray.sort((a, b) => {
+        return b.timestamp - a.timestamp;
+      });
+
+      displayComment(commentsArray);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+fetchCommentsAPIData();
 
 let formEl = document.querySelector(".comment__form");
 
@@ -199,17 +195,7 @@ formEl.addEventListener("submit", (event) => {
     errorMessageNameEl.innerText = "";
     errorMessageCommentEl.innerText = "";
 
-    let commentDate = new Date();
-
-    // let newComment = {
-    //   Name: event.target.commenteeName.value,
-    //   Date: commentDate,
-    //   Text: event.target.comment.value,
-    // };
-    // console.log("Post");
-
-    // console.log(event.target.commenteeName.value);
-    // console.log(event.target.comment.value);
+    // let commentDate = new Date();
 
     axios
       .post(commentsURL, {
@@ -217,66 +203,8 @@ formEl.addEventListener("submit", (event) => {
         comment: event.target.comment.value,
       })
       .then((response) => {
-        console.log(response.data);
-
-        axios.get(commentsURL).then((response) => {
-          // console.log(response.data);
-          let commentsList = response.data;
-          // console.log(commentsList);
-
-          commentsList.forEach((commentsListItem) => {
-            let commentDivEl = document.createElement("div");
-            commentDivEl.classList.add("comment__result-div");
-
-            let commentDivImageEl = document.createElement("div");
-            commentDivImageEl.classList.add("comment__result-div--image");
-
-            let commentImageEl = document.createElement("img");
-            commentImageEl.innerText = "";
-            commentImageEl.classList.add("comment__form-user-image");
-            commentImageEl.classList.add("comment__form-user-image--result");
-
-            commentDivImageEl.appendChild(commentImageEl);
-
-            commentDivEl.appendChild(commentDivImageEl);
-
-            let commentDivDetailEl = document.createElement("div");
-            commentDivDetailEl.classList.add("comment__result-div--detail");
-
-            let commentNameEl = document.createElement("p");
-            commentNameEl.innerText = commentsListItem.name;
-            commentNameEl.classList.add("comment__result-details");
-            commentNameEl.classList.add("comment__result-details--left");
-
-            commentDivDetailEl.appendChild(commentNameEl);
-
-            let commentDateEl = document.createElement("p");
-            commentDateEl.innerText = dynamicTimestamp(
-              new Date(commentsListItem.timestamp)
-            );
-            commentDateEl.classList.add("comment__result-details");
-            commentDateEl.classList.add("comment__result-details--right");
-            commentDateEl.classList.add("comment__result-details--font-color");
-
-            commentDivDetailEl.appendChild(commentDateEl);
-
-            let commentTextEl = document.createElement("p");
-            commentTextEl.innerText = commentsListItem.comment;
-            commentTextEl.classList.add("comment__result-details");
-            commentTextEl.classList.add("comment__result-details--center");
-
-            commentDivDetailEl.appendChild(commentTextEl);
-
-            commentDivEl.appendChild(commentDivDetailEl);
-
-            commentsEl.appendChild(commentDivEl);
-          });
-        });
+        fetchCommentsAPIData();
       });
-
-    // commentsList.unshift(newComment);
-
-    // displayComment();
 
     formEl.reset();
   }

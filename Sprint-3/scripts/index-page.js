@@ -1,8 +1,3 @@
-const api_key = "01c12858-2061-4084-9107-2bcbbb35f0f8";
-
-const commentsURL =
-  "https://project-1-api.herokuapp.com/comments?api_key=" + api_key;
-
 // let commentsList = [
 //   {
 //     Name: "Connor Walton",
@@ -20,6 +15,11 @@ const commentsURL =
 //     Text: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
 //   },
 // ];
+
+const api_key = "01c12858-2061-4084-9107-2bcbbb35f0f8";
+
+const commentsURL =
+  "https://project-1-api.herokuapp.com/comments?api_key=" + api_key;
 
 let commentsEl = document.querySelector(".comment__result");
 
@@ -148,14 +148,10 @@ function fetchCommentsAPIData() {
   axios
     .get(commentsURL)
     .then((response) => {
-      // console.log(response.data);
       let commentsArray = response.data;
-      // console.log(commentsList);
-
       commentsArray.sort((a, b) => {
         return b.timestamp - a.timestamp;
       });
-
       displayComment(commentsArray);
     })
     .catch((error) => {
@@ -194,8 +190,6 @@ formEl.addEventListener("submit", (event) => {
   } else {
     errorMessageNameEl.innerText = "";
     errorMessageCommentEl.innerText = "";
-
-    // let commentDate = new Date();
 
     axios
       .post(commentsURL, {

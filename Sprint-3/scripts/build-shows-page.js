@@ -70,7 +70,7 @@ function displayShows(showsList) {
     tableRowEl.appendChild(heading1MobileEl);
 
     let dateEl = document.createElement("p");
-    dateEl.innerText = new Date(showsListItem.date);
+    dateEl.innerText = new Date(showsListItem.date).toDateString();
     dateEl.classList.add("shows-detail__list-items");
     tableRowEl.appendChild(dateEl);
 

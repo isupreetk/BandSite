@@ -99,9 +99,9 @@ function displayComment(commentsList) {
     let commentDivEl = document.createElement("div");
     commentDivEl.classList.add("comment__result-div");
 
-    /* new code for diving deeper */
-    commentDivEl.setAttribute("data-commentID", commentsListItem.id);
-    // console.log(commentDivEl);
+    // /* new code for diving deeper */
+    // commentDivEl.setAttribute("data-commentID", commentsListItem.id);
+    // // console.log(commentDivEl);
 
     let commentDivImageEl = document.createElement("div");
     commentDivImageEl.classList.add("comment__result-div--image");
@@ -145,12 +145,22 @@ function displayComment(commentsList) {
     let commentLikeEl = document.createElement("button");
     commentLikeEl.innerText = "LIKE" + commentsListItem.likes;
     commentLikeEl.classList.add("comment__result-details");
+    commentLikeEl.classList.add("comment__result-details--like-button");
+
+    /* new code for diving deeper */
+    commentLikeEl.setAttribute("data-commentIDLike", commentsListItem.id);
+    // console.log(commentLikeEl);
 
     commentDivDetailEl.appendChild(commentLikeEl);
 
     let commentDeleteEl = document.createElement("button");
     commentDeleteEl.innerText = "Delete";
     commentDeleteEl.classList.add("comment__result-details");
+    commentDeleteEl.classList.add("comment__result-details--delete-button");
+
+    /* new code for diving deeper */
+    commentDeleteEl.setAttribute("data-commentIDDelete", commentsListItem.id);
+    // console.log(commentDeleteEl);
 
     commentDivDetailEl.appendChild(commentDeleteEl);
 
@@ -161,53 +171,103 @@ function displayComment(commentsList) {
 }
 
 function fetchCommentsAPIData() {
-  axios
-    .get(commentsURL + api_key)
-    .then((response) => {
-      let commentsArray = response.data;
-      // console.log(commentsArray);
+  axios.get(commentsURL + api_key).then((response) => {
+    let commentsArray = response.data;
+    // console.log(commentsArray);
 
-      commentsArray.sort((a, b) => {
-        return b.timestamp - a.timestamp;
-      });
-      displayComment(commentsArray);
-
-      let commentsResultDivEl = document.querySelectorAll(
-        ".comment__result-div"
-      );
-      // console.log(commentsResultDivEl);
-
-      commentsResultDivEl.forEach((commentResult) => {
-        commentResult.addEventListener("click", (event) => {
-          let commentID = commentResult.getAttribute("data-commentID");
-          // console.log(commentID);
-
-          // axios
-          //   .put(commentsURL + "/" + commentID + "/like" + api_key)
-          //   .then((response) => {
-          //     console.log(response.data);
-          //     fetchCommentsAPIData();
-          //   })
-          //   .catch((error) => {
-          //     console.log(error);
-          //   });
-
-          // axios
-          //   .delete(commentsURL + "/" + commentID + api_key)
-          //   .then((response) => {
-          //     console.log(response.data);
-          //     fetchCommentsAPIData();
-          //   })
-          //   .catch((error) => {
-          //     console.log(error);
-          //   });
-        });
-      });
-    })
-    .catch((error) => {
-      console.log(error);
+    commentsArray.sort((a, b) => {
+      return b.timestamp - a.timestamp;
     });
+    displayComment(commentsArray);
+
+    // let commentsResultDivEl = document.querySelectorAll(
+    //   ".comment__result-div"
+    // );
+    // // console.log(commentsResultDivEl);
+
+    let commentResultLikeEl = document.querySelectorAll(
+      ".comment__result-details--like-button"
+    );
+    // console.log(commentResultLikeEl);
+
+    let commentResultDeleteEl = document.querySelectorAll(
+      ".comment__result-details--delete-button"
+    );
+    // console.log(commentResultDeleteEl);
+
+    commentResultLikeEl.forEach((commentResultLike) => {
+      commentResultLike.addEventListener("click", (event) => {
+        let commentID = commentResultLike.getAttribute("data-commentIDLike");
+        console.log(commentID);
+
+        axios
+          .put(commentsURL + "/" + commentID + "/like" + api_key)
+          .then((response) => {
+            console.log(response.data);
+            fetchCommentsAPIData();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      });
+    });
+
+    commentResultDeleteEl.forEach((commentResultDelete) => {
+      commentResultDelete.addEventListener("click", (event) => {
+        let commentID = commentResultDelete.getAttribute(
+          "data-commentIDDelete"
+        );
+        console.log(commentID);
+
+        axios
+          .delete(commentsURL + "/" + commentID + api_key)
+          .then((response) => {
+            console.log(response.data);
+            fetchCommentsAPIData();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      });
+    });
+  });
 }
+// }
+//   });
+// });
+
+//       commentsResultDivEl.forEach((commentResult) => {
+//         commentResult.addEventListener("click", (event) => {
+//           let commentID = commentResult.getAttribute("data-commentID");
+//           // console.log(commentID);
+
+//           // axios
+//           //   .put(commentsURL + "/" + commentID + "/like" + api_key)
+//           //   .then((response) => {
+//           //     console.log(response.data);
+//           //     fetchCommentsAPIData();
+//           //   })
+//           //   .catch((error) => {
+//           //     console.log(error);
+//           //   });
+
+//           // axios
+//           //   .delete(commentsURL + "/" + commentID + api_key)
+//           //   .then((response) => {
+//           //     console.log(response.data);
+//           //     fetchCommentsAPIData();
+//           //   })
+//           //   .catch((error) => {
+//           //     console.log(error);
+//           //   });
+//         });
+//       });
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+//   });
+// }
 
 fetchCommentsAPIData();
 

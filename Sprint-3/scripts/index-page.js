@@ -231,8 +231,8 @@ let formEl = document.querySelector(".comment__form");
 let commenteeNameEl = document.getElementById("commenteeName");
 let commentEl = document.getElementById("comment");
 
-let errorMessageNameEl = document.getElementById("commenteeNameError");
-let errorMessageCommentEl = document.getElementById("commentError");
+// let errorMessageNameEl = document.getElementById("commenteeNameError");
+// let errorMessageCommentEl = document.getElementById("commentError");
 
 formEl.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -242,19 +242,21 @@ formEl.addEventListener("submit", (event) => {
     event.target.commenteeName.value == null ||
     event.target.commenteeName.value == undefined
   ) {
-    errorMessageNameEl.innerText = "Please enter your Name.";
+    // errorMessageNameEl.innerText = "Please enter your Name.";
+    commenteeNameEl.placeholder = "Please enter your Name.";
     commenteeNameEl.classList.add("comment__form-input--error");
   } else if (
     event.target.comment.value == "" ||
     event.target.comment.value == null ||
     event.target.comment.value == undefined
   ) {
-    errorMessageNameEl.innerText = "";
-    errorMessageCommentEl.innerText = "Please enter your Comment.";
+    // errorMessageNameEl.innerText = "";
+    // errorMessageCommentEl.innerText = "Please enter your Comment.";
+    commentEl.placeholder = "Please enter your Comment.";
     commentEl.classList.add("comment__form-input--error");
   } else {
-    errorMessageNameEl.innerText = "";
-    errorMessageCommentEl.innerText = "";
+    // errorMessageNameEl.innerText = "";
+    // errorMessageCommentEl.innerText = "";
 
     axios
       .post(commentsURL + api_key, {

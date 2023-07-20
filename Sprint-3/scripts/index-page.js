@@ -99,10 +99,6 @@ function displayComment(commentsList) {
     let commentDivEl = document.createElement("div");
     commentDivEl.classList.add("comment__result-div");
 
-    // /* new code for diving deeper */
-    // commentDivEl.setAttribute("data-commentID", commentsListItem.id);
-    // // console.log(commentDivEl);
-
     let commentDivImageEl = document.createElement("div");
     commentDivImageEl.classList.add("comment__result-div--image");
 
@@ -180,11 +176,6 @@ function fetchCommentsAPIData() {
     });
     displayComment(commentsArray);
 
-    // let commentsResultDivEl = document.querySelectorAll(
-    //   ".comment__result-div"
-    // );
-    // // console.log(commentsResultDivEl);
-
     let commentResultLikeEl = document.querySelectorAll(
       ".comment__result-details--like-button"
     );
@@ -232,42 +223,6 @@ function fetchCommentsAPIData() {
     });
   });
 }
-// }
-//   });
-// });
-
-//       commentsResultDivEl.forEach((commentResult) => {
-//         commentResult.addEventListener("click", (event) => {
-//           let commentID = commentResult.getAttribute("data-commentID");
-//           // console.log(commentID);
-
-//           // axios
-//           //   .put(commentsURL + "/" + commentID + "/like" + api_key)
-//           //   .then((response) => {
-//           //     console.log(response.data);
-//           //     fetchCommentsAPIData();
-//           //   })
-//           //   .catch((error) => {
-//           //     console.log(error);
-//           //   });
-
-//           // axios
-//           //   .delete(commentsURL + "/" + commentID + api_key)
-//           //   .then((response) => {
-//           //     console.log(response.data);
-//           //     fetchCommentsAPIData();
-//           //   })
-//           //   .catch((error) => {
-//           //     console.log(error);
-//           //   });
-//         });
-//       });
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-//   });
-// }
 
 fetchCommentsAPIData();
 
@@ -326,34 +281,3 @@ commentInputFieldEl.forEach((commentInputField) => {
     commentInputField.classList.add("comment__form-input--active");
   });
 });
-
-// commentsResultDivEl.addEventListener("click", (event) => {
-// let commentID = event.target.comment.value;
-// console.log(commentID);
-
-// fetchCommentsAPIData();
-// console.log("Inside click event");
-// axios
-//   .get(commentsURL + api_key)
-//   .then((response) => {
-//     let commentsArray = response.data;
-//     // console.log(commentsArray);
-//     commentsArray.forEach((comment) => {
-//       let commentID = comment.id;
-//       console.log(commentID);
-//     });
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
-
-// axios.put(commentsURL + "/" + id + "/like" + api_key).then((response) => {
-//   console.log(response);
-//   // likes += 1;
-// });
-// });
-
-// let commentIndividualResultEl = document.querySelectorAll(
-//   ".comment__result-div"
-// );
-// console.log(commentIndividualResultEl);

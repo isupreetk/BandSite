@@ -16,12 +16,12 @@
 //   },
 // ];
 
-const api_key = "01c12858-2061-4084-9107-2bcbbb35f0f8";
+const api_key = "?api_key=01c12858-2061-4084-9107-2bcbbb35f0f8";
 
-const commentsURL =
-  "https://project-1-api.herokuapp.com/comments?api_key=" + api_key;
+const commentsURL = "https://project-1-api.herokuapp.com/comments";
 
 let commentsEl = document.querySelector(".comment__result");
+// console.log(commentsEl);
 
 function dynamicTimestamp(commentDate) {
   let currentTimestamp = new Date();
@@ -99,6 +99,10 @@ function displayComment(commentsList) {
     let commentDivEl = document.createElement("div");
     commentDivEl.classList.add("comment__result-div");
 
+    /* new code for diving deeper */
+    commentDivEl.setAttribute("data-commentID", commentsListItem.id);
+    // console.log(commentDivEl);
+
     let commentDivImageEl = document.createElement("div");
     commentDivImageEl.classList.add("comment__result-div--image");
 
@@ -138,6 +142,18 @@ function displayComment(commentsList) {
 
     commentDivDetailEl.appendChild(commentTextEl);
 
+    let commentLikeEl = document.createElement("button");
+    commentLikeEl.innerText = "LIKE" + commentsListItem.likes;
+    commentLikeEl.classList.add("comment__result-details");
+
+    commentDivDetailEl.appendChild(commentLikeEl);
+
+    let commentDeleteEl = document.createElement("button");
+    commentDeleteEl.innerText = "Delete";
+    commentDeleteEl.classList.add("comment__result-details");
+
+    commentDivDetailEl.appendChild(commentDeleteEl);
+
     commentDivEl.appendChild(commentDivDetailEl);
 
     commentsEl.appendChild(commentDivEl);
@@ -146,13 +162,47 @@ function displayComment(commentsList) {
 
 function fetchCommentsAPIData() {
   axios
-    .get(commentsURL)
+    .get(commentsURL + api_key)
     .then((response) => {
       let commentsArray = response.data;
+      // console.log(commentsArray);
+
       commentsArray.sort((a, b) => {
         return b.timestamp - a.timestamp;
       });
       displayComment(commentsArray);
+
+      let commentsResultDivEl = document.querySelectorAll(
+        ".comment__result-div"
+      );
+      // console.log(commentsResultDivEl);
+
+      commentsResultDivEl.forEach((commentResult) => {
+        commentResult.addEventListener("click", (event) => {
+          let commentID = commentResult.getAttribute("data-commentID");
+          // console.log(commentID);
+
+          // axios
+          //   .put(commentsURL + "/" + commentID + "/like" + api_key)
+          //   .then((response) => {
+          //     console.log(response.data);
+          //     fetchCommentsAPIData();
+          //   })
+          //   .catch((error) => {
+          //     console.log(error);
+          //   });
+
+          // axios
+          //   .delete(commentsURL + "/" + commentID + api_key)
+          //   .then((response) => {
+          //     console.log(response.data);
+          //     fetchCommentsAPIData();
+          //   })
+          //   .catch((error) => {
+          //     console.log(error);
+          //   });
+        });
+      });
     })
     .catch((error) => {
       console.log(error);
@@ -192,7 +242,7 @@ formEl.addEventListener("submit", (event) => {
     errorMessageCommentEl.innerText = "";
 
     axios
-      .post(commentsURL, {
+      .post(commentsURL + api_key, {
         name: event.target.commenteeName.value,
         comment: event.target.comment.value,
       })
@@ -216,3 +266,34 @@ commentInputFieldEl.forEach((commentInputField) => {
     commentInputField.classList.add("comment__form-input--active");
   });
 });
+
+// commentsResultDivEl.addEventListener("click", (event) => {
+// let commentID = event.target.comment.value;
+// console.log(commentID);
+
+// fetchCommentsAPIData();
+// console.log("Inside click event");
+// axios
+//   .get(commentsURL + api_key)
+//   .then((response) => {
+//     let commentsArray = response.data;
+//     // console.log(commentsArray);
+//     commentsArray.forEach((comment) => {
+//       let commentID = comment.id;
+//       console.log(commentID);
+//     });
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+
+// axios.put(commentsURL + "/" + id + "/like" + api_key).then((response) => {
+//   console.log(response);
+//   // likes += 1;
+// });
+// });
+
+// let commentIndividualResultEl = document.querySelectorAll(
+//   ".comment__result-div"
+// );
+// console.log(commentIndividualResultEl);

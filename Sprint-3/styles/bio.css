@@ -416,4 +416,16 @@
 }
 .comment__result-details--font-color {
   color: #323232;
+}
+.comment__result-button-div {
+  display: flex;
+  justify-content: flex-end;
+}
+.comment__result-button {
+  width: 25%;
+  height: 2rem;
+  padding: 0rem;
+}
+.comment__result-button--delete {
+  margin-left: 0.625rem;
 }/*# sourceMappingURL=bio.css.map */

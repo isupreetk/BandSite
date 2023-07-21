@@ -46,10 +46,10 @@ function dynamicTimestamp(commentDate) {
     diffYears == 0
   ) {
     if (diffMinutes == 1) {
-      let commentTimeMessage = diffMinutes + " minute ago";
+      let commentTimeMessage = `${diffMinutes} minute ago`;
       return commentTimeMessage;
     } else {
-      let commentTimeMessage = diffMinutes + " minutes ago";
+      let commentTimeMessage = `${diffMinutes} minutes ago`;
       return commentTimeMessage;
     }
   } else if (
@@ -59,168 +59,239 @@ function dynamicTimestamp(commentDate) {
     diffYears == 0
   ) {
     if (diffHours == 1) {
-      let commentTimeMessage = diffHours + " hour ago";
+      let commentTimeMessage = `${diffHours} hour ago`;
       return commentTimeMessage;
     } else {
-      let commentTimeMessage = diffHours + " hours ago";
+      let commentTimeMessage = `${diffHours} hours ago`;
       return commentTimeMessage;
     }
   } else if (diffDays > 0 && diffMonths == 0 && diffYears == 0) {
     if (diffDays == 1) {
-      let commentTimeMessage = diffDays + " day ago";
+      let commentTimeMessage = `${diffDays} day ago`;
       return commentTimeMessage;
     } else {
-      let commentTimeMessage = diffDays + " days ago";
+      let commentTimeMessage = `${diffDays} days ago`;
       return commentTimeMessage;
     }
   } else if (diffMonths > 0 && diffYears == 0) {
     if (diffMonths == 1) {
-      let commentTimeMessage = diffMonths + " month ago";
+      let commentTimeMessage = `${diffMonths} month ago`;
       return commentTimeMessage;
     } else {
-      let commentTimeMessage = diffMonths + " months ago";
+      let commentTimeMessage = `${diffMonths} months ago`;
       return commentTimeMessage;
     }
   } else if (diffYears > 0) {
     if (diffYears == 1) {
-      let commentTimeMessage = diffYears + " year ago";
+      let commentTimeMessage = `${diffYears} year ago`;
       return commentTimeMessage;
     } else {
-      let commentTimeMessage = diffYears + " years ago";
+      let commentTimeMessage = `${diffYears} years ago`;
       return commentTimeMessage;
     }
   }
 }
 
-function displayComment(commentsList) {
-  commentsEl.innerText = "";
+// function displayComment(commentsList) {
+function displayComment(commentsListItem) {
+  // commentsEl.innerText = "";
 
-  commentsList.forEach((commentsListItem) => {
-    let commentDivEl = document.createElement("div");
-    commentDivEl.classList.add("comment__result-div");
+  // commentsEl = commentsList + commentsEl;
+  // commentsList.sort((a, b) => {
+  //   return b.timestamp - a.timestamp;
+  // });
 
-    let commentDivImageEl = document.createElement("div");
-    commentDivImageEl.classList.add("comment__result-div--image");
+  // commentsList.forEach((commentsListItem) => {
+  let commentDivEl = document.createElement("div");
+  commentDivEl.classList.add("comment__result-div");
 
-    let commentImageEl = document.createElement("img");
-    commentImageEl.innerText = "";
-    commentImageEl.classList.add("comment__form-user-image");
-    commentImageEl.classList.add("comment__form-user-image--result");
+  let commentDivImageEl = document.createElement("div");
+  commentDivImageEl.classList.add("comment__result-div--image");
 
-    commentDivImageEl.appendChild(commentImageEl);
+  let commentImageEl = document.createElement("img");
+  commentImageEl.innerText = "";
+  commentImageEl.classList.add("comment__form-user-image");
+  commentImageEl.classList.add("comment__form-user-image--result");
 
-    commentDivEl.appendChild(commentDivImageEl);
+  commentDivImageEl.appendChild(commentImageEl);
 
-    let commentDivDetailEl = document.createElement("div");
-    commentDivDetailEl.classList.add("comment__result-div--detail");
+  commentDivEl.appendChild(commentDivImageEl);
 
-    let commentNameEl = document.createElement("p");
-    commentNameEl.innerText = commentsListItem.name;
-    commentNameEl.classList.add("comment__result-details");
-    commentNameEl.classList.add("comment__result-details--left");
+  let commentDivDetailEl = document.createElement("div");
+  commentDivDetailEl.classList.add("comment__result-div--detail");
 
-    commentDivDetailEl.appendChild(commentNameEl);
+  let commentNameEl = document.createElement("p");
+  commentNameEl.innerText = commentsListItem.name;
+  commentNameEl.classList.add("comment__result-details");
+  commentNameEl.classList.add("comment__result-details--left");
 
-    let commentDateEl = document.createElement("p");
-    commentDateEl.innerText = dynamicTimestamp(
-      new Date(commentsListItem.timestamp)
-    );
-    commentDateEl.classList.add("comment__result-details");
-    commentDateEl.classList.add("comment__result-details--right");
-    commentDateEl.classList.add("comment__result-details--font-color");
+  commentDivDetailEl.appendChild(commentNameEl);
 
-    commentDivDetailEl.appendChild(commentDateEl);
+  let commentDateEl = document.createElement("p");
+  commentDateEl.innerText = dynamicTimestamp(
+    new Date(commentsListItem.timestamp)
+  );
+  commentDateEl.classList.add("comment__result-details");
+  commentDateEl.classList.add("comment__result-details--right");
+  commentDateEl.classList.add("comment__result-details--font-color");
 
-    let commentTextEl = document.createElement("p");
-    commentTextEl.innerText = commentsListItem.comment;
-    commentTextEl.classList.add("comment__result-details");
-    commentTextEl.classList.add("comment__result-details--center");
+  commentDivDetailEl.appendChild(commentDateEl);
 
-    commentDivDetailEl.appendChild(commentTextEl);
+  let commentTextEl = document.createElement("p");
+  commentTextEl.innerText = commentsListItem.comment;
+  commentTextEl.classList.add("comment__result-details");
+  commentTextEl.classList.add("comment__result-details--center");
 
-    let commentLikeEl = document.createElement("button");
-    commentLikeEl.innerText = "LIKE" + commentsListItem.likes;
-    commentLikeEl.classList.add("comment__result-details");
-    commentLikeEl.classList.add("comment__result-details--like-button");
+  commentDivDetailEl.appendChild(commentTextEl);
 
-    /* new code for diving deeper */
-    commentLikeEl.setAttribute("data-commentIDLike", commentsListItem.id);
-    // console.log(commentLikeEl);
+  let commentButtonDivEl = document.createElement("div");
+  commentButtonDivEl.classList.add("comment__result-button-div");
 
-    commentDivDetailEl.appendChild(commentLikeEl);
+  let commentLikeEl = document.createElement("button");
+  commentLikeEl.innerText = `👍 ${commentsListItem.likes}`;
+  commentLikeEl.classList.add("button");
+  // commentLikeEl.classList.add("comment__result-details");
+  commentLikeEl.classList.add("comment__result-button");
+  commentLikeEl.classList.add("comment__result-button--like");
 
-    let commentDeleteEl = document.createElement("button");
-    commentDeleteEl.innerText = "Delete";
-    commentDeleteEl.classList.add("comment__result-details");
-    commentDeleteEl.classList.add("comment__result-details--delete-button");
+  /* new code for diving deeper */
+  commentLikeEl.setAttribute("data-commentIDLike", commentsListItem.id);
+  // console.log(commentLikeEl);
+  commentButtonDivEl.appendChild(commentLikeEl);
 
-    /* new code for diving deeper */
-    commentDeleteEl.setAttribute("data-commentIDDelete", commentsListItem.id);
-    // console.log(commentDeleteEl);
+  // let commentResultLikeEl = document.querySelectorAll(
+  //   ".comment__result-button--like"
+  // );
+  // console.log(commentResultLikeEl);
 
-    commentDivDetailEl.appendChild(commentDeleteEl);
+  // commentResultLikeEl.forEach((commentResultLike) => {
+  commentLikeEl.addEventListener("click", (event) => {
+    let commentID = commentLikeEl.getAttribute("data-commentIDLike");
+    console.log(commentID);
+    console.log("Click before put");
 
-    commentDivEl.appendChild(commentDivDetailEl);
-
-    commentsEl.appendChild(commentDivEl);
+    axios
+      .put(`${commentsURL}/${commentID}/like${api_key}`)
+      .then((response) => {
+        console.log("PUT");
+        console.log(response.data);
+        // fetchCommentsAPIData();
+        // displayComment(response.data);
+        commentLikeEl.innerText = `👍 ${response.data.likes}`;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   });
+  // });
+
+  // commentButtonDivEl.appendChild(commentLikeEl);
+
+  let commentDeleteEl = document.createElement("button");
+  commentDeleteEl.innerText = "🗑️";
+  commentDeleteEl.classList.add("button");
+  // commentDeleteEl.classList.add("comment__result-details");
+  commentDeleteEl.classList.add("comment__result-button");
+  commentDeleteEl.classList.add("comment__result-button--delete");
+
+  /* new code for diving deeper */
+  commentDeleteEl.setAttribute("data-commentIDDelete", commentsListItem.id);
+  console.log(commentDeleteEl);
+
+  commentButtonDivEl.appendChild(commentDeleteEl);
+
+  // commentResultDeleteEl.forEach((commentResultDelete) => {
+  commentDeleteEl.addEventListener("click", (event) => {
+    let commentID = commentDeleteEl.getAttribute("data-commentIDDelete");
+    console.log(commentID);
+
+    axios
+      .delete(`${commentsURL}/${commentID}${api_key}`)
+      .then((response) => {
+        console.log(response.data);
+        // fetchCommentsAPIData();
+        // commentDivDetailEl.remove();
+        commentDivEl.remove();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+  // });
+
+  commentDivDetailEl.appendChild(commentButtonDivEl);
+
+  commentDivEl.appendChild(commentDivDetailEl);
+
+  // commentsEl.appendChild(commentDivEl);
+  commentsEl.prepend(commentDivEl);
+
+  // commentsEl.unshift(commentsListItem);
+  // });
 }
 
 function fetchCommentsAPIData() {
   axios.get(commentsURL + api_key).then((response) => {
+    commentsEl.innerText = "";
+
     let commentsArray = response.data;
-    // console.log(commentsArray);
+    console.log("get", commentsArray);
 
     commentsArray.sort((a, b) => {
-      return b.timestamp - a.timestamp;
+      return a.timestamp - b.timestamp;
     });
-    displayComment(commentsArray);
 
-    let commentResultLikeEl = document.querySelectorAll(
-      ".comment__result-details--like-button"
-    );
+    commentsArray.forEach((comment) => {
+      displayComment(comment);
+    });
+
+    // let commentResultLikeEl = document.querySelectorAll(
+    //   ".comment__result-button--like"
+    // );
     // console.log(commentResultLikeEl);
 
-    let commentResultDeleteEl = document.querySelectorAll(
-      ".comment__result-details--delete-button"
-    );
+    // let commentResultDeleteEl = document.querySelectorAll(
+    //   ".comment__result-button--delete"
+    // );
     // console.log(commentResultDeleteEl);
 
-    commentResultLikeEl.forEach((commentResultLike) => {
-      commentResultLike.addEventListener("click", (event) => {
-        let commentID = commentResultLike.getAttribute("data-commentIDLike");
-        console.log(commentID);
+    // commentResultLikeEl.forEach((commentResultLike) => {
+    //   commentResultLike.addEventListener("click", (event) => {
+    //     let commentID = commentResultLike.getAttribute("data-commentIDLike");
+    //     console.log(commentID);
+    //     console.log("Click before put");
 
-        axios
-          .put(commentsURL + "/" + commentID + "/like" + api_key)
-          .then((response) => {
-            console.log(response.data);
-            fetchCommentsAPIData();
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      });
-    });
+    //     axios
+    //       .put(`${commentsURL}/${commentID}/like${api_key}`)
+    //       .then((response) => {
+    //         console.log("PUT");
+    //         console.log(response.data);
+    //         fetchCommentsAPIData();
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //       });
+    //   });
+    // });
 
-    commentResultDeleteEl.forEach((commentResultDelete) => {
-      commentResultDelete.addEventListener("click", (event) => {
-        let commentID = commentResultDelete.getAttribute(
-          "data-commentIDDelete"
-        );
-        console.log(commentID);
+    // commentResultDeleteEl.forEach((commentResultDelete) => {
+    //   commentResultDelete.addEventListener("click", (event) => {
+    //     let commentID = commentResultDelete.getAttribute(
+    //       "data-commentIDDelete"
+    //     );
+    //     console.log(commentID);
 
-        axios
-          .delete(commentsURL + "/" + commentID + api_key)
-          .then((response) => {
-            console.log(response.data);
-            fetchCommentsAPIData();
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      });
-    });
+    //     axios
+    //       .delete(`${commentsURL}/${commentID}${api_key}`)
+    //       .then((response) => {
+    //         console.log(response.data);
+    //         fetchCommentsAPIData();
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //       });
+    //   });
+    // });
   });
 }
 
@@ -264,7 +335,9 @@ formEl.addEventListener("submit", (event) => {
         comment: event.target.comment.value,
       })
       .then((response) => {
-        fetchCommentsAPIData();
+        console.log("post", response.data);
+        displayComment(response.data);
+        // fetchCommentsAPIData();
       });
 
     formEl.reset();

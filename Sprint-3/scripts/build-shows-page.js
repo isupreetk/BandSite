@@ -33,8 +33,7 @@
 
 const api_key = "01c12858-2061-4084-9107-2bcbbb35f0f8";
 
-const showDatesURL =
-  "https://project-1-api.herokuapp.com/showdates?api_key=" + api_key;
+const showDatesURL = "https://project-1-api.herokuapp.com/showdates?api_key=";
 
 function displayShows(showsList) {
   let showsSubheadingEl = document.querySelector(".shows-detail__subheading");
@@ -117,7 +116,7 @@ function displayShows(showsList) {
 }
 
 function fetchShowsData() {
-  axios.get(showDatesURL).then((response) => {
+  axios.get(showDatesURL + api_key).then((response) => {
     let showsData = response.data;
     displayShows(showsData);
   });

@@ -1,27 +1,8 @@
-// let commentsList = [
-//   {
-//     Name: "Connor Walton",
-//     Date: "02/17/2021",
-//     Text: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",
-//   },
-//   {
-//     Name: "Emilie Beach",
-//     Date: "01/09/2021",
-//     Text: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.",
-//   },
-//   {
-//     Name: "Miles Acosta",
-//     Date: "12/20/2020",
-//     Text: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
-//   },
-// ];
-
 const api_key = "?api_key=01c12858-2061-4084-9107-2bcbbb35f0f8";
 
 const commentsURL = "https://project-1-api.herokuapp.com/comments";
 
 let commentsEl = document.querySelector(".comment__result");
-// console.log(commentsEl);
 
 function dynamicTimestamp(commentDate) {
   let currentTimestamp = new Date();
@@ -92,16 +73,7 @@ function dynamicTimestamp(commentDate) {
   }
 }
 
-// function displayComment(commentsList) {
 function displayComment(commentsListItem) {
-  // commentsEl.innerText = "";
-
-  // commentsEl = commentsList + commentsEl;
-  // commentsList.sort((a, b) => {
-  //   return b.timestamp - a.timestamp;
-  // });
-
-  // commentsList.forEach((commentsListItem) => {
   let commentDivEl = document.createElement("div");
   commentDivEl.classList.add("comment__result-div");
 
@@ -150,21 +122,14 @@ function displayComment(commentsListItem) {
   let commentLikeEl = document.createElement("button");
   commentLikeEl.innerText = `👍 ${commentsListItem.likes}`;
   commentLikeEl.classList.add("button");
-  // commentLikeEl.classList.add("comment__result-details");
+
   commentLikeEl.classList.add("comment__result-button");
   commentLikeEl.classList.add("comment__result-button--like");
 
-  /* new code for diving deeper */
   commentLikeEl.setAttribute("data-commentIDLike", commentsListItem.id);
-  // console.log(commentLikeEl);
+
   commentButtonDivEl.appendChild(commentLikeEl);
 
-  // let commentResultLikeEl = document.querySelectorAll(
-  //   ".comment__result-button--like"
-  // );
-  // console.log(commentResultLikeEl);
-
-  // commentResultLikeEl.forEach((commentResultLike) => {
   commentLikeEl.addEventListener("click", (event) => {
     let commentID = commentLikeEl.getAttribute("data-commentIDLike");
     console.log(commentID);
@@ -175,59 +140,41 @@ function displayComment(commentsListItem) {
       .then((response) => {
         console.log("PUT");
         console.log(response.data);
-        // fetchCommentsAPIData();
-        // displayComment(response.data);
         commentLikeEl.innerText = `👍 ${response.data.likes}`;
       })
       .catch((error) => {
         console.log(error);
       });
   });
-  // });
-
-  // commentButtonDivEl.appendChild(commentLikeEl);
 
   let commentDeleteEl = document.createElement("button");
   commentDeleteEl.innerText = "🗑️";
   commentDeleteEl.classList.add("button");
-  // commentDeleteEl.classList.add("comment__result-details");
   commentDeleteEl.classList.add("comment__result-button");
   commentDeleteEl.classList.add("comment__result-button--delete");
 
-  /* new code for diving deeper */
   commentDeleteEl.setAttribute("data-commentIDDelete", commentsListItem.id);
-  console.log(commentDeleteEl);
 
   commentButtonDivEl.appendChild(commentDeleteEl);
 
-  // commentResultDeleteEl.forEach((commentResultDelete) => {
   commentDeleteEl.addEventListener("click", (event) => {
     let commentID = commentDeleteEl.getAttribute("data-commentIDDelete");
-    console.log(commentID);
 
     axios
       .delete(`${commentsURL}/${commentID}${api_key}`)
       .then((response) => {
-        console.log(response.data);
-        // fetchCommentsAPIData();
-        // commentDivDetailEl.remove();
         commentDivEl.remove();
       })
       .catch((error) => {
         console.log(error);
       });
   });
-  // });
 
   commentDivDetailEl.appendChild(commentButtonDivEl);
 
   commentDivEl.appendChild(commentDivDetailEl);
 
-  // commentsEl.appendChild(commentDivEl);
   commentsEl.prepend(commentDivEl);
-
-  // commentsEl.unshift(commentsListItem);
-  // });
 }
 
 function fetchCommentsAPIData() {
@@ -244,54 +191,6 @@ function fetchCommentsAPIData() {
     commentsArray.forEach((comment) => {
       displayComment(comment);
     });
-
-    // let commentResultLikeEl = document.querySelectorAll(
-    //   ".comment__result-button--like"
-    // );
-    // console.log(commentResultLikeEl);
-
-    // let commentResultDeleteEl = document.querySelectorAll(
-    //   ".comment__result-button--delete"
-    // );
-    // console.log(commentResultDeleteEl);
-
-    // commentResultLikeEl.forEach((commentResultLike) => {
-    //   commentResultLike.addEventListener("click", (event) => {
-    //     let commentID = commentResultLike.getAttribute("data-commentIDLike");
-    //     console.log(commentID);
-    //     console.log("Click before put");
-
-    //     axios
-    //       .put(`${commentsURL}/${commentID}/like${api_key}`)
-    //       .then((response) => {
-    //         console.log("PUT");
-    //         console.log(response.data);
-    //         fetchCommentsAPIData();
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
-    //   });
-    // });
-
-    // commentResultDeleteEl.forEach((commentResultDelete) => {
-    //   commentResultDelete.addEventListener("click", (event) => {
-    //     let commentID = commentResultDelete.getAttribute(
-    //       "data-commentIDDelete"
-    //     );
-    //     console.log(commentID);
-
-    //     axios
-    //       .delete(`${commentsURL}/${commentID}${api_key}`)
-    //       .then((response) => {
-    //         console.log(response.data);
-    //         fetchCommentsAPIData();
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
-    //   });
-    // });
   });
 }
 
@@ -302,9 +201,6 @@ let formEl = document.querySelector(".comment__form");
 let commenteeNameEl = document.getElementById("commenteeName");
 let commentEl = document.getElementById("comment");
 
-// let errorMessageNameEl = document.getElementById("commenteeNameError");
-// let errorMessageCommentEl = document.getElementById("commentError");
-
 formEl.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -313,7 +209,6 @@ formEl.addEventListener("submit", (event) => {
     event.target.commenteeName.value == null ||
     event.target.commenteeName.value == undefined
   ) {
-    // errorMessageNameEl.innerText = "Please enter your Name.";
     commenteeNameEl.placeholder = "Please enter your Name.";
     commenteeNameEl.classList.add("comment__form-input--error");
   } else if (
@@ -321,14 +216,9 @@ formEl.addEventListener("submit", (event) => {
     event.target.comment.value == null ||
     event.target.comment.value == undefined
   ) {
-    // errorMessageNameEl.innerText = "";
-    // errorMessageCommentEl.innerText = "Please enter your Comment.";
     commentEl.placeholder = "Please enter your Comment.";
     commentEl.classList.add("comment__form-input--error");
   } else {
-    // errorMessageNameEl.innerText = "";
-    // errorMessageCommentEl.innerText = "";
-
     axios
       .post(commentsURL + api_key, {
         name: event.target.commenteeName.value,
@@ -337,7 +227,6 @@ formEl.addEventListener("submit", (event) => {
       .then((response) => {
         console.log("post", response.data);
         displayComment(response.data);
-        // fetchCommentsAPIData();
       });
 
     formEl.reset();

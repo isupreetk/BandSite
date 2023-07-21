@@ -397,28 +397,15 @@
 
   &__result-button-div {
     display: flex;
-    // align-items: flex-end;
     justify-content: flex-end;
   }
-  
-  // &__result-button {
-  //   width: 30%;
-  //   height: 2.5rem;
-  //   // margin-left: 0.625rem;
-  // }
   
   &__result-button{
     width: 25%;
     height: 2rem;
     padding: 0rem;
 
-    &--like {
-    
-    // margin-left: 0.625rem;
-  }
-
   &--delete {
-   
     margin-left: 0.625rem;
   }
   }

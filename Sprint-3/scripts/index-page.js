@@ -103,7 +103,6 @@ function displayComment(commentsListItem) {
   console.log(nameParts.join(" "));
 
   commentNameEl.innerText = nameParts.join(" ");
-  //commentsListItem.name;
 
   commentNameEl.classList.add("comment__result-details");
   commentNameEl.classList.add("comment__result-details--left");

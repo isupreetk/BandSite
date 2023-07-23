@@ -93,7 +93,18 @@ function displayComment(commentsListItem) {
   commentDivDetailEl.classList.add("comment__result-div--detail");
 
   let commentNameEl = document.createElement("p");
-  commentNameEl.innerText = commentsListItem.name;
+
+  /* to capitalize 1st letter of each word in the name */
+  const nameParts = commentsListItem.name.split(" ");
+
+  for (let i = 0; i < nameParts.length; i++) {
+    nameParts[i] = nameParts[i][0].toUpperCase() + nameParts[i].substr(1);
+  }
+  console.log(nameParts.join(" "));
+
+  commentNameEl.innerText = nameParts.join(" ");
+  //commentsListItem.name;
+
   commentNameEl.classList.add("comment__result-details");
   commentNameEl.classList.add("comment__result-details--left");
 

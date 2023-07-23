@@ -405,6 +405,7 @@
 }
 .comment__result-details--left {
   justify-content: flex-start;
+  font-weight: 600;
 }
 .comment__result-details--center {
   width: 100%;
